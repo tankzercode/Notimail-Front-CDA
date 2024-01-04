@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Logo from '../assets/LogoByMathysG.jpg'
 import ArrowDown from '../assets/arrow-down.png'
 import LockLogin from '../assets/lock-login.png'
-import '../App.css'
+import style from './login.module.css'
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -21,19 +21,19 @@ const Login = () => {
 
     return (
         <>
-            <div className="login-container">
-                <img src={Logo} className="logo"/>
+            <div className={style.loginContainer}>
+                <img src={Logo} className={style.logo} />
                 <form onChange={handleSubmit} action="">
-                    <div className="input-container">
-                        <input value={username} onChange={changeUsername}type="text" placeholder='Username' required />
-                        <div className="right-part">
+                    <div className={style.inputContainer}>
+                        <input value={username} onChange={changeUsername} type="text" placeholder='Username' required />
+                        <div className={style.rightPart}>
                             <img src={ArrowDown} />
                         </div>
                     </div>
-                    <div className="input-container">
-                        <input  value={password} onChange={changePassword} type="password" required />
-                        <div className="right-part">
-                            <div className='background-lock'>
+                    <div className={style.inputContainer}>
+                        <input value={password} onChange={changePassword} type="password" required />
+                        <div className={style.rightPart}>
+                            <div className={style.backgroundLock}>
                                 <img src={LockLogin} />
                             </div>
                         </div>
