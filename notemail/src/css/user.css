@@ -1,0 +1,28 @@
+.receptionner {
+	background-color:#006b92;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 60px;
+	text-decoration:none;
+}
+.receptionner:hover {
+	background-color:#005675;
+}
+.receptionner:active {
+	position:relative;
+	top:1px;
+}
+.container-component{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container-test{
+    justify-content: center;
+    align-items: center;
+}

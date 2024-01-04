@@ -1,15 +1,23 @@
 
+body{
+display: block;
+}
 header{
+	position: fixed;
     display: flex;
-    width: 430px;
+    width: 100%;
     height: 155px;
-    background-color: aquamarine;
+    background-color: #E3E3E3;
     align-items:center;
+	top:0;
+	justify-content: space-between;
 }
 .container-of-header{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-right: 5vw;
+	
 }
 
 .disconnect {
@@ -32,6 +40,20 @@ header{
 }
 
 .logo{
-    height: 84px;
-    width: 84px;;
+    height: 64px;
+    width: 70px;
+	
+}
+.container-logo{
+  padding-left:10vw;
+}
+p{
+	display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.entreprise{
+	margin-block-end: 1em;
 }

@@ -1,8 +1,8 @@
 import './App.css'
 
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { User } from './pages/user'
-import { Navbar } from './pages/navbar'
+import {Route, Routes } from "react-router-dom"
+import { User } from './component/user'
+import { Navbar } from './component/Navbar'
 
 function App() {
 
