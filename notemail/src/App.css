@@ -1,6 +1,5 @@
 body {
   min-height: 100vh;
-  /* display: block; */
 }
 
 :root {
@@ -11,9 +10,6 @@ body {
   --color5: #FF3535;
 }
 
-/* form {
-  padding: 20px;
-} */
 .logo {
   width: 40%;
   display: block;
@@ -22,7 +18,14 @@ body {
 
 .login-container {
   padding-top: 50px;
-  top: 0;
+  min-width: 300px;
+  width: 60%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.login {
+  width: 100%;
 }
 
 .login-container form {
@@ -40,7 +43,7 @@ body {
   background: var(--color3);
   display: grid;
   grid-template-columns: 80% 20%;
-  grid-template-rows: 60px;
+  grid-template-rows: 70px;
 }
 
 .input-container input {

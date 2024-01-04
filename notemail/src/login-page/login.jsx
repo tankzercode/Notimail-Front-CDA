@@ -15,15 +15,15 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = e => {
+        e.preventDefault()
     }
 
     return (
         <>
             <div className="login-container">
                 <img src={Logo} className="logo"/>
-                <form onChange={handleSubmit} action="">
+                <form onSubmit={handleSubmit} action="" >
                     <div className="input-container">
                         <input value={username} onChange={changeUsername}type="text" placeholder='Username' required />
                         <div className="right-part">
