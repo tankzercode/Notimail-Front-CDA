@@ -1,0 +1,59 @@
+
+body{
+display: block;
+}
+header{
+	position: fixed;
+    display: flex;
+    width: 100%;
+    height: 155px;
+    background-color: #E3E3E3;
+    align-items:center;
+	top:0;
+	justify-content: space-between;
+}
+.container-of-header{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-right: 5vw;
+	
+}
+
+.disconnect {
+	background-color:#ff6464;
+	border-radius:28px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:10px 20px;
+	text-decoration:none;
+}
+.disconnect:hover {
+	background-color:#f05757;
+}
+.disconnect:active {
+	position:relative;
+	top:1px;
+}
+
+.logo{
+    height: 64px;
+    width: 70px;
+	
+}
+.container-logo{
+  padding-left:10vw;
+}
+p{
+	display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.entreprise{
+	margin-block-end: 1em;
+}
