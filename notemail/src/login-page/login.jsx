@@ -7,16 +7,20 @@ const Login = () => {
     return (
         <>
             <div className="login-container">
-                <img src={Logo} />
+                <img src={Logo} className="logo"/>
                 <form action="">
                     <div className="input-container">
-                        <input type="text" placeholder='Username'/>
-                        <img src={ArrowDown} />
+                        <input type="text" placeholder='Username' required />
+                        <div className="right-part">
+                            <img src={ArrowDown} />
+                        </div>
                     </div>
                     <div className="input-container">
-                        <input type="text" />
-                        <div className='background-lock'>
-                            <img src={LockLogin} />
+                        <input type="text" required />
+                        <div className="right-part">
+                            <div className='background-lock'>
+                                <img src={LockLogin} />
+                            </div>
                         </div>
                     </div>
                 </form>
