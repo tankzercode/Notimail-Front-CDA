@@ -59,7 +59,8 @@ body {
 
 .background-lock {
   width: 70%;
-  min-height: 70%;
+  max-width: 60px;
+  max-height: 60px;
   padding: 5px;
   border-radius: 50%;
   background: var(--color2);
