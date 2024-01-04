@@ -6,8 +6,10 @@ export const Navbar = () => {
         <>
            <header>
                 <img src={Logo} alt="" className="logo" />
-                <p>Entreprise </p> {/* il faudra faire des modifs pour que le nom de (du compte)l'entreprise s'affiche  */}
-                <a href="#" className="disconnect">Déconnexion</a>
+                <div className="container-of-header">
+                    <p>Entreprise </p> {/* il faudra faire des modifs pour que le nom de (du compte)l'entreprise s'affiche  */}
+                    <a href="#" className="disconnect">Déconnexion</a>
+                </div>
            </header>
         </>
     )
