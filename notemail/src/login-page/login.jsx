@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Logo from '../assets/LogoByMathysG.jpg'
 import ArrowDown from '../assets/arrow-down.png'
 import LockLogin from '../assets/lock-login.png'
-import '../App.css'
+import style from './login.module.css'
 
 const Login = () => {
     /* useState pour contenir mes informations pour me connecter */
@@ -27,27 +27,28 @@ const Login = () => {
 
     /* Contenu HTML de ma page login*/
     return (
-            <div className="login-container">
-                <div className="login">
-                    <img src={Logo} className="logo"/>
-                    <form onSubmit={handleSubmit} action="" >
-                        <div className="input-container">
-                            <input value={username} onChange={changeUsername}type="text" placeholder='Username' required />
-                            <div className="right-part">
-                                <img src={ArrowDown} />
+        <>
+            <div className={style.loginContainer}>
+                <img src={Logo} className={style.logo} />
+                <form onChange={handleSubmit} action="">
+                    <div className={style.inputContainer}>
+                        <input value={username} onChange={changeUsername} type="text" placeholder='Username' required />
+                        <div className={style.rightPart}>
+                            <img src={ArrowDown} />
+                        </div>
+                    </div>
+                    <div className={style.inputContainer}>
+                        <input value={password} onChange={changePassword} type="password" required />
+                        <div className={style.rightPart}>
+                            <div className={style.backgroundLock}>
+                                <img src={LockLogin} />
                             </div>
                         </div>
-                        <div className="input-container">
-                            <input  value={password} onChange={changePassword} type="password" required />
-                            <div className="right-part">
-                                <div className='background-lock'>
-                                    <img src={LockLogin} />
-                                </div>
-                            </div>
-                        </div>
+                 </div>
                     </form>
                 </div>
-            </div>
+</>
+            
     )
 }
 
