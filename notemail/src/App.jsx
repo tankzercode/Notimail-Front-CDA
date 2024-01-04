@@ -1,5 +1,4 @@
 import './App.css'
-
 import {Route, Routes } from "react-router-dom"
 import { User } from './component/user'
 import { Navbar } from './component/Navbar'
