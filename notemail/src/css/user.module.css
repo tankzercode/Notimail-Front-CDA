@@ -12,9 +12,11 @@ p{
     font-size: 17px;
     padding: 20px 100px;
     text-decoration: none;
+	outline: none;
 }
 .receptionner:hover {
 	background-color:#005675;
+	outline: none;
 }
 .receptionner:active {
 	position:relative;
@@ -52,4 +54,7 @@ svg{
 .yes_no_modal{
 	display: flex;
     justify-content: space-around;
+}
+button{
+	border: none;
 }
