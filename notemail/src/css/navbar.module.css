@@ -10,7 +10,7 @@ header{
 	top: 0;
 	
 }
-.container-of-header{
+.containerOfHeader{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -37,12 +37,12 @@ header{
 	top:1px;
 }
 
-.logo{
-    height: 64px;
-    width: 70px;
-	
-}
-.container-logo{
+	.logo{
+		height: 64px;
+		width: 70px;
+
+	}
+.containerLogo{
   padding-left:10vw;
 }
 p{
@@ -52,7 +52,7 @@ p{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.entreprise{
+.entreprisegit{
 	margin-block-end: 1em;
 }
 .entreprise-git{
