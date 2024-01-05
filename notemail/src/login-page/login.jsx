@@ -36,7 +36,7 @@ const Login = () => {
                 <form onChange={handleSubmit} action="">
                     <div className={style.inputContainer}>
                         {/* <input value={username} onChange={changeUsername} type="text" placeholder='Username' required /> */}
-                        <select onChange={changeUsername} name="pets">
+                        <select onChange={changeUsername}>
                             <option value="" disabled selected hidden>Entreprise</option>
                             {table.map((el,index)=>{
                                 return <option key={index} value={el} > {el}</option>
