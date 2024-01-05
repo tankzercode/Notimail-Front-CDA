@@ -21,8 +21,6 @@ console.log(user)
                     </div>
                 </header>
                 
-          
-        
         </>
     )
 }
