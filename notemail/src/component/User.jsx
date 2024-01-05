@@ -12,7 +12,6 @@ export const User = () => {
     const onCloseModal = () => setOpen(false);
     return(
         <>
-        
             <div className={style.containerComponent}>
                 <div className={style.logoMail}>
                     <img src={Mail} alt="" />
