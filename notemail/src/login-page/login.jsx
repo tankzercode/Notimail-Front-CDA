@@ -35,7 +35,6 @@ const Login = () => {
                 <img src={Logo} className={style.logo} />
                 <form onChange={handleSubmit} action="">
                     <div className={style.inputContainer}>
-                        {/* <input value={username} onChange={changeUsername} type="text" placeholder='Username' required /> */}
                         <select onChange={changeUsername}>
                             <option value="" disabled selected hidden>Entreprise</option>
                             {table.map((el,index)=>{

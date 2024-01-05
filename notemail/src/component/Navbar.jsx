@@ -1,15 +1,14 @@
 import { useContext } from "react"
 import Logo from "../assets/notimailPng.png"
 import style from '../css/navbar.module.css'
-import ExempleContext from "./context"
+import userContext from "./context"
 
 export const Navbar = () => {
 
-    const user = useContext(ExempleContext)
-console.log(user)
+    const user = useContext(userContext)
+    console.log(user)
     return(
         <>
-       
                 <header>
                 <div className={style.containerLogo}>
                     <img src={Logo} alt="" className={style.logo} />
