@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import Login from './login-page/login'
-
+import './App.css'
 import { Navbar } from './component/Navbar'
 import { User } from './component/User';
 
