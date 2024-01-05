@@ -1,5 +1,6 @@
 body {
     min-height: 100vh;
+    margin: 0;
   }
   :root {
     --color1: #008787;
@@ -33,7 +34,6 @@ body {
   }
   
   .inputContainer {
-    /* padding: 20px; */
     margin-top: 30px;
     width: 70%;
     border-radius: 100px;
@@ -43,12 +43,15 @@ body {
     grid-template-columns: 80% 20%;
     grid-template-rows: 70px;
   }
-  .inputContainer input {
+  .inputContainer input, .inputContainer select {
     padding-left: 20px;
     background: transparent;
     border: none;
   }
-  input:focus {
+  select {
+    appearance: none;
+  }
+  input:focus, select:focus {
     outline: none;
   }
   
@@ -67,14 +70,12 @@ body {
     border-radius: 50%;
     background: var(--color2);
     text-align: center;
+    border: none;
+    cursor: pointer;
   }
   .backgroundLock img {
     width: 90%;
   }
-
-  /*  */
-
-
 
   :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -101,10 +102,6 @@ body {
     color: #535bf2;
   }
   
-  body {
-    margin: 0;
-  }
-  
   h1 {
     font-size: 3.2em;
     line-height: 1.1;
@@ -113,7 +110,6 @@ body {
   button {
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
