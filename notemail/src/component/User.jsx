@@ -1,4 +1,4 @@
-import '../css/user.css'
+import style from '../css/user.module.css'
 import Mail from "../assets/MailNotif.png"
 import { Modal } from 'react-responsive-modal';
 import { useState } from 'react';
@@ -11,14 +11,14 @@ export const User = () => {
     return(
         <>
         
-            <div className='container-component'>
+            <div className={style.containerComponent}>
                 <div>
                     <img src={Mail} alt="" />
                 </div>
-                    <p className='txt-mail'>Vous avez du courrier en attente</p>
+                    <p className={style.txtMail}>Vous avez du courrier en attente</p>
 
                 </div> 
-                <button onClick={onOpenModal} className='receptionner'>Receptionner</button> 
+                <button onClick={onOpenModal} className={style.receptionner}>Receptionner</button> 
       <Modal open={open} onClose={onCloseModal} center>
         <h2>Simple centered modal</h2>
         <p>
