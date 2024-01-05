@@ -1,15 +1,17 @@
 
-
+p{
+	color: #006C92;
+}
 .receptionner {
-	background-color:#006b92;
-	border-radius:42px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	padding:16px 60px;
-	text-decoration:none;
+	background-color: #006b92;
+    border-radius: 42px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 20px 100px;
+    text-decoration: none;
 }
 .receptionner:hover {
 	background-color:#005675;
@@ -27,4 +29,27 @@
 }
 .txtMail{
     font-size: 24px;
+}
+.container_receptionner{
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
+.logoMail{
+	padding-bottom: 15px;
+}
+
+svg{
+	display: none;
+}
+.txt_confirm{
+	font-size: 24px;
+}
+.modal_container{
+	padding: 5px 25px;
+}
+
+.yes_no_modal{
+	display: flex;
+    justify-content: space-around;
 }
