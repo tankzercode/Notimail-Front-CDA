@@ -12,7 +12,6 @@ function App() {
   const [user, setUser] = useState('Message')
 
   return (
-    
     <>
     <ExempleContext.Provider value={{user, setUser} } >
       {window.location.pathname !== "/" &&
