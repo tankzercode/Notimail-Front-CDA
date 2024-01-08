@@ -10,7 +10,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-
+    // requete API, qu'on ajoute au useState entreprises sous forme de tableau
     useEffect(() => {
         fetch(`../public/test.json`)
         .then(res => res.json())
@@ -32,11 +32,30 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
+    // Fonction pour vérifier le mot de passe
+    const checkPassword = () => {
+        for (let i = 0; i < entreprises.length; i++) {
+            console.log('test');
+            if (username == entreprises[i].firm_name) {
+                console.log('correct');
+                if (password == entreprises[i].password) {
+                    console.log('Vous êtes connecté !');
+                    // ajouter le reste du comportement
+                }
+                if (password !== entreprises[i].password) {
+                    console.log('Mot de passe incorrect');
+                    // ajouter le reste du comportement
+                }
+            }
+        }
+    }
+
     /* Fonction qui gère l'envoie du formulaire pour se connecter */
     const handleSubmit = e => {
         /* Annule le conportement par défaut qui consiste à actualiser la page quand on submit */
-        e.preventDefault()
-        
+        e.preventDefault();
+        // vérification du mot de passe
+        checkPassword();
     }
 
     /* Contenu HTML de ma page login*/
@@ -44,14 +63,13 @@ const Login = () => {
         <>
             <div className={style.loginContainer}>
                 <img src={Logo} className={style.logo} />
-                <form onChange={handleSubmit} action="">
+                <form onSubmit={handleSubmit} action="">
                     <div className={style.inputContainer}>
                         <select onChange={changeUsername}>
                             <option value="" disabled selected hidden>Entreprise</option>
                             {entreprises.map((entreprise, index) => (
                                 <option key={index} value={entreprise.firm_name}>{entreprise.firm_name}</option>
                             ))}
-
                         </select>
                         <div className={style.rightPart}>
                             <img src={ArrowDown} />
