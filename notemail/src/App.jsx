@@ -5,6 +5,7 @@ import './App.css'
 import { Navbar } from './component/Navbar'
 import { User } from './component/User';
 import ExempleContext from './component/context'
+import Admin from './admin-page/admin';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Login />} ></Route>
+        <Route path='/admin' element={<Admin />}> </Route>
 
         <Route path='/user' element={<User />}> </Route>
       </Routes>

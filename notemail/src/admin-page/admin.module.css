@@ -1,0 +1,40 @@
+.searchBarContainer {
+    min-width: 300px;
+    width: 60%;
+    max-width: 500px;
+    padding: 5px;
+    border-radius: 100px;
+    margin: 38px auto;
+    background: var(--color3);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.searchBarContainer svg {
+    font-size: 29px;
+}
+.searchBarContainer input {
+    font-size: 18px;
+    width: 90%;
+    background: var(--color3);
+    color: white;
+    border: none;
+}
+
+.entrepriseListContainer {
+    min-height: 500px;
+    width: 70%;
+    margin: 0 auto;
+}
+.entrepriseCard {
+    padding: 7px 25px;
+    border-radius: 32px;
+    background: var(--color3);
+}
+.entrepriseInfos h3, .entrepriseInfos p {
+    margin: 0;
+}
+
+.searchBarContainer input[type="text"]::placeholder {
+    color: white; /* Remplacez cette valeur par la couleur que vous souhaitez */
+}

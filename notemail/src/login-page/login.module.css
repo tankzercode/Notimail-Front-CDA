@@ -3,14 +3,6 @@ body {
   margin: 0;
 }
 
-:root {
-  --color1: #008787;
-  --color2: #025892;
-  --color3: #E3E3E3;
-  --color4: #D6D6D6;
-  --color5: #FF3535;
-}
-
 /* Login page */
 
 .logo {

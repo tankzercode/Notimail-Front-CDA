@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap');
+
+* {
+	font-family: 'Kanit', sans-serif;
+}
+
+:root {
+	--color1: #008787;
+	--color2: #025892;
+	--color3: #E3E3E3;
+	--color4: #D6D6D6;
+	--color5: #FF3535;
+  }  
+
 .react-responsive-modal-modal{
 	background-color: #D9D9D9;
 	border-radius: 45px !important;
