@@ -37,9 +37,8 @@ const Login = () => {
         for (let i = 0; i < entreprises.length; i++) {
             console.log('test');
             if (username == entreprises[i].firm_name) {
-                console.log('correct');
                 if (password == entreprises[i].password) {
-                    console.log('Vous êtes connecté !');
+                    console.log('Vous êtes connecté');
                     // ajouter le reste du comportement
                 }
                 if (password !== entreprises[i].password) {
