@@ -20,7 +20,7 @@ export const Navbar = () => {
                 </div>
                     <div className={style.containerOfHeader}>
                         <p className={style.entreprisegit}>
-                            {user && user.user} </p> {/* il faudra faire des modifs pour que le nom de (du compte)l'entreprise s'affiche  */}
+                            {user && user.user} </p> 
                         <a href="#" className={style.disconnect}>Déconnexion</a>
                     </div>
                 </header>
