@@ -1,33 +1,34 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import Login from './login-page/login'
 import './App.css'
 import { Navbar } from './component/Navbar'
 import { User } from './component/User';
-import ExempleContext from './component/context'
+import UserContext from './userContext';
 
 function App() {
-
-  const dataContext = 'Data à partager';
-  const [user, setUser] = useState('Message')
-
+  
+  const [user, setUser] = React.useState(null)
+  useEffect(()=>{
+    setUser("dsklfjdskflj")
+  }, [])
   return (
     <>
-    <ExempleContext.Provider value={{user, setUser} } >
-      {window.location.pathname !== "/" &&
-      
-      <Navbar />
-    }
-
-      <Routes>
-        <Route path="/" element={<Login />} ></Route>
-
-        <Route path='/user' element={<User />}> </Route>
-      </Routes>
-      </ExempleContext.Provider>
-    </>
+    <UserContext.Provider value={{user, setUser} } >
+    {window.location.pathname !== "/" &&
+    
+    <Navbar />
+  }
+  
+  <Routes>
+  <Route path="/" element={<Login />} ></Route>
+  
+  <Route path='/user' element={<User />}> </Route>
+  </Routes>
+  </UserContext.Provider>
+  </>
   )
-
+  
 }
 
 export default App
