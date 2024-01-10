@@ -1,6 +1,7 @@
 
 p{
 	color: #006C92;
+
 }
 .receptionner {
 	background-color: #006b92;
@@ -10,9 +11,13 @@ p{
     color: #ffffff;
     font-family: Arial;
     font-size: 17px;
-    padding: 20px 100px;
+    padding: 20px;
     text-decoration: none;
 	outline: none;
+	min-width: 200px;
+	max-width: 500px;
+	width: 50%;
+
 }
 .receptionner:hover {
 	background-color:#005675;
@@ -31,6 +36,7 @@ p{
 }
 .txtMail{
     font-size: 24px;
+	text-align: center;
 }
 .container_receptionner{
 	display: flex;
