@@ -12,17 +12,15 @@ export const User = () => {
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
     const user = useContext(UserContext)
-
+console.log(user)
     const notifyMail =() =>{
-      fetch('http://localhost:3000/users/', { method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "cors", // no-cors, *cors, same-origin
-      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "same-origin", // include, *same-origin, omit
+      fetch('http://localhost:3000/users/root', { method: "POST", // *GET, POST, PUT, DELETE, etc.
+    
       headers: {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       }}).then((res)=>{return res}).then((resp)=> {
-console.log(        resp.json())
+console.log( resp.json())
         return resp.json()
       }).catch((err)=> {
         console.log(err)
@@ -34,8 +32,9 @@ console.log(        resp.json())
             <div className={style.containerComponent}>
                 <div className={style.logoMail}>
                     <img src={Mail} alt="" />
-                </div>
-                {user.user.has_mail &&
+                </div>{ user.user &&
+                <>
+                    {user.user.has_mail &&
                                 <p className={style.txtMail}>Vous avez du courrier en attente</p>    
                
                 }
@@ -44,6 +43,8 @@ console.log(        resp.json())
 
                 
                 }
+                </>
+            }
             </div> 
 
             
