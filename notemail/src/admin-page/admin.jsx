@@ -1,5 +1,7 @@
 import { IoIosSearch } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
+import { RiMailSendLine } from "react-icons/ri";
+import { IoMdAdd } from "react-icons/io";
 import style from './admin.module.css'
 import { useState } from "react";
 const EntrepriseMoreDetails = () => {
@@ -56,6 +58,54 @@ const Admin = () => {
                     {showDetails && <EntrepriseMoreDetails></EntrepriseMoreDetails>}
                 </div>
             </div>        
+            <div className={style.entrepriseListContainer}>
+                <div className={style.moreDetailsContainer} onClick={handleCardClick}>
+                    <div className={style.entrepriseCard}>
+                        <div className={style.entrepriseInfos}>
+                            <h3>Entreprise 1</h3>
+                            <p>Nom contact</p>
+                            <p>19/09/2023</p>
+                        </div>
+                        <div className={style.entrepriseEdit}>
+                            <label className={style.toggleButton}>
+                                <input type="checkbox" />
+                                <span className={style.knob}></span>
+                            </label>
+                            <button>
+                                <FaEdit style={{ color: 'var(--color2)' }} className={style.editButton} />
+                            </button>
+                        </div>
+                    </div>
+                    {showDetails && <EntrepriseMoreDetails></EntrepriseMoreDetails>}
+                </div>
+            </div>        
+            <div className={style.entrepriseListContainer}>
+                <div className={style.moreDetailsContainer} onClick={handleCardClick}>
+                    <div className={style.entrepriseCard}>
+                        <div className={style.entrepriseInfos}>
+                            <h3>Entreprise 1</h3>
+                            <p>Nom contact</p>
+                            <p>19/09/2023</p>
+                        </div>
+                        <div className={style.entrepriseEdit}>
+                            <label className={style.toggleButton}>
+                                <input type="checkbox" />
+                                <span className={style.knob}></span>
+                            </label>
+                            <button className={style.editButton}>
+                                <FaEdit style={{ color: 'var(--color2)' }} className={style.editButton} />
+                            </button>
+                        </div>
+                    </div>
+                    {showDetails && <EntrepriseMoreDetails></EntrepriseMoreDetails>}
+                </div>
+            </div>        
+            <div className={style.buttonSection}>
+                <div className={style.buttonContainer}>
+                    <button><IoMdAdd color="var(--color6)" fontSize="1.7rem" padding=""/></button>
+                    <button><RiMailSendLine color="var(--color6)" fontSize="1.7rem" padding=""/></button>
+                </div>
+            </div>
         </>
     );
 };
