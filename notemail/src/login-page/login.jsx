@@ -12,12 +12,16 @@ const Login = () => {
 
     // requete API, qu'on ajoute au useState entreprises sous forme de tableau
     useEffect(() => {
-        fetch(`../public/test.json`)
-        .then(res => res.json())
-        .then((data) => {
-            console.log(data)
-            setEntreprises(data)
+        console.log('ffff')
+        fetch(`http://localhost:3000/user`, {
+        withCredential: true,    
+        headers : {"Content-Type" : "application/json"}})
+        .then((res) => {
+            return res.json()
+        }).then((res) => {
+            setEntreprises(res)
         })
+
     }, [])
 
     /* fonction qui gère l'update de mon useState username */
@@ -33,33 +37,68 @@ const Login = () => {
     }
 
     // Fonction pour vérifier le mot de passe
-    const checkPassword = () => {
-        for (let i = 0; i < entreprises.length; i++) {
-            console.log('test');
-            if (username == entreprises[i].firm_name) {
-                if (password == entreprises[i].password) {
-                    console.log('Vous êtes connecté');
-                    // ajouter le reste du comportement
-                }
-                if (password !== entreprises[i].password) {
-                    console.log('Mot de passe incorrect');
-                    // ajouter le reste du comportement
-                }
-            }
-        }
-    }
 
     /* Fonction qui gère l'envoie du formulaire pour se connecter */
-    const handleSubmit = e => {
-        /* Annule le conportement par défaut qui consiste à actualiser la page quand on submit */
+    // const handleSubmit = e => {
+    //     /* Annule le conportement par défaut qui consiste à actualiser la page quand on submit */
+    //     e.preventDefault();
+    //     // vérification du mot de passe
+    //     fetch(`http://localhost:3000/user/login`, {
+    //         method: 'POST'
+    //     })
+    //     .then (res =>  res)
+    //     .then (res.json())
+    //     .then (res) => {
+    //         console.log('fffffffff');
+    //         console.log(res);
+    //                 if (res.ok) {
+    //         const responseData = await res.json();
+    //         console.log('Réponse de l\'API:', responseData);
+    //         // Ajoutez ici la logique pour traiter la réponse de l'API
+    //       } else {
+    //         console.error('Échec de la requête API');
+    //       }
+    //     } catch (error) {
+    //       console.error('Erreur lors de la requête API:', error);
+    //     }
+            
+    //     }
+    //     .catch((err) => console.log(err))
+
+
+    // }
+
+    const handleSubmit = (e) => {
         e.preventDefault();
+      
         // vérification du mot de passe
-        checkPassword();
-    }
+        fetch('http://localhost:3000/login',{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                firm_name: `${username}`,
+                password: `${password}`
+            })
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((responseData) => {
+            console.log('Réponse de l\'API:', responseData);
+          })
+          .catch((error) => {
+            console.error('Erreur lors de la requête API:', error);
+          });
+      };
+
 
     /* Contenu HTML de ma page login*/
     return (
         <>
+        {console.log(entreprises)}
             <div className={style.loginContainer}>
                 <img src={Logo} className={style.logo} />
                 <form onSubmit={handleSubmit} action="">
