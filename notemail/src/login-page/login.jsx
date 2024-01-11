@@ -13,6 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
 
+    // On crée un context nommé user
     const user = useContext(userContext);
 
     // requete API, qu'on ajoute au useState entreprises sous forme de tableau
@@ -68,7 +69,9 @@ const Login = () => {
 
           })
           .then((responseData) => {
+            // On update notre const user avec l'objet user de notre reponse venant du back
             user.setUser(responseData.user);
+            // Si is_admin de l'objet user === true, renvoie sur la page /admin, sinon /user
             if(responseData.user.is_admin) {
                 navigate('/admin')
             } else{
@@ -81,7 +84,6 @@ const Login = () => {
             console.error('Erreur lors de la requête API:', error);
           });
       };
-
 
     /* Contenu HTML de ma page login*/
     return (
