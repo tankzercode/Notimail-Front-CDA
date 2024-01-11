@@ -1,14 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Logo from '../assets/LogoByMathysG.jpg'
 import ArrowDown from '../assets/arrow-down.png'
 import LockLogin from '../assets/lock-login.png'
+import { useNavigate } from "react-router-dom";
 import style from './login.module.css'
+import userContext from '../component/context';
 
 const Login = () => {
     /* useState pour contenir mes informations pour me connecter */
     const [entreprises, setEntreprises] = useState([]);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    const user = useContext(userContext);
 
     // requete API, qu'on ajoute au useState entreprises sous forme de tableau
     useEffect(() => {
@@ -28,13 +33,14 @@ const Login = () => {
     const changeUsername = e => {
         /* On actualise le useState grâce à l'event */
         setUsername(e.target.value)
-        console.log(e.target.value)
     }
 
     /* fonction qui gère l'update de mon useState password */
     const changePassword = e => {
         setPassword(e.target.value)
     }
+
+    const navigate = useNavigate();
 
     // Fonction qui gère le comportement du submit
 
@@ -46,21 +52,29 @@ const Login = () => {
         // Requette en post pour envoyer au back des informations (firm_name et password dans cet exemple)
         fetch('http://localhost:3000/login',{
             method: 'POST',
+            credentials: 'include',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 firm_name: `${username}`,
-                password: `${password}`
+                password: `${password}`,
             })
         })
           .then((res) => {
             // on renvoie la réponse converti en json()
             return res.json();
+
           })
           .then((responseData) => {
-            console.log('Réponse de l\'API:', responseData);
+            user.setUser(responseData.user);
+            if(responseData.user.is_admin) {
+                navigate('/admin')
+            } else{
+                navigate('/user')
+            }
+            console.log(user);
           })
           .catch((error) => {
             // Renvoi l'erreur potentielle
@@ -72,7 +86,6 @@ const Login = () => {
     /* Contenu HTML de ma page login*/
     return (
         <>
-        {console.log(entreprises)}
             <div className={style.loginContainer}>
                 <img src={Logo} className={style.logo} />
                 <form onSubmit={handleSubmit} action="">
