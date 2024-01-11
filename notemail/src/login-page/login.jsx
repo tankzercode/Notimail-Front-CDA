@@ -12,13 +12,13 @@ const Login = () => {
 
     // requete API, qu'on ajoute au useState entreprises sous forme de tableau
     useEffect(() => {
-        console.log('ffff')
         fetch(`http://localhost:3000/user`, {
         withCredential: true,    
         headers : {"Content-Type" : "application/json"}})
         .then((res) => {
             return res.json()
         }).then((res) => {
+            // On update le useState entreprises pour qu'il contienne la liste des entreprises sous forme de tableau
             setEntreprises(res)
         })
 
@@ -36,42 +36,14 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-    // Fonction pour vérifier le mot de passe
-
-    /* Fonction qui gère l'envoie du formulaire pour se connecter */
-    // const handleSubmit = e => {
-    //     /* Annule le conportement par défaut qui consiste à actualiser la page quand on submit */
-    //     e.preventDefault();
-    //     // vérification du mot de passe
-    //     fetch(`http://localhost:3000/user/login`, {
-    //         method: 'POST'
-    //     })
-    //     .then (res =>  res)
-    //     .then (res.json())
-    //     .then (res) => {
-    //         console.log('fffffffff');
-    //         console.log(res);
-    //                 if (res.ok) {
-    //         const responseData = await res.json();
-    //         console.log('Réponse de l\'API:', responseData);
-    //         // Ajoutez ici la logique pour traiter la réponse de l'API
-    //       } else {
-    //         console.error('Échec de la requête API');
-    //       }
-    //     } catch (error) {
-    //       console.error('Erreur lors de la requête API:', error);
-    //     }
-            
-    //     }
-    //     .catch((err) => console.log(err))
-
-
-    // }
+    // Fonction qui gère le comportement du submit
 
     const handleSubmit = (e) => {
         e.preventDefault();
       
         // vérification du mot de passe
+
+        // Requette en post pour envoyer au back des informations (firm_name et password dans cet exemple)
         fetch('http://localhost:3000/login',{
             method: 'POST',
             headers: {
@@ -84,12 +56,14 @@ const Login = () => {
             })
         })
           .then((res) => {
+            // on renvoie la réponse converti en json()
             return res.json();
           })
           .then((responseData) => {
             console.log('Réponse de l\'API:', responseData);
           })
           .catch((error) => {
+            // Renvoi l'erreur potentielle
             console.error('Erreur lors de la requête API:', error);
           });
       };
@@ -103,9 +77,11 @@ const Login = () => {
                 <img src={Logo} className={style.logo} />
                 <form onSubmit={handleSubmit} action="">
                     <div className={style.inputContainer}>
+                    {/* Pour avoir le menu deroulant dans le login  dans la section username */}
                         <select onChange={changeUsername}>
                             <option value="" disabled selected hidden>Entreprise</option>
                             {entreprises.map((entreprise, index) => (
+                                // Je recupere sur chaque json de l'API le firm_name de l'entreprise pour l'affichage dans l'input select 
                                 <option key={index} value={entreprise.firm_name}>{entreprise.firm_name}</option>
                             ))}
                         </select>
