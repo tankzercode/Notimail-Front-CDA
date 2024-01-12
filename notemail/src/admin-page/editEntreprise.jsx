@@ -13,13 +13,49 @@ export const EditEntreprise = () => {
         </div>
 
         <div className={style.container}>
-            <button><img src={Retour} alt="" /></button>
+            <button className={style.buttonRetour}><img src={Retour} alt="" /></button>
             <div className={style.containerTxtEntreprise}>
                 <p className={style.txtEntreprise}>Entreprise</p>
             </div>
         </div>
 
-        <div></div>
+        <div className={style.containerAll}>
+            <div className={style.containerInput_text}>
+                <p className={style.txt}>Entreprise:</p>
+                <div className={style.inputContainer}>
+                    <input type="text" />
+                </div>
+            </div>
+            <div className={style.containerInput_text}>
+                <p className={style.txt}>Contact:</p>
+                <div>
+                <div className={style.inputContainer}>
+                    <input type="text" placeholder="" />
+                </div>
+                <div className={style.inputContainer}>
+                    <input type="text" />
+                </div>
+            </div>
+            </div> 
+            <div className={style.containerInput_text}>
+                <p className={style.txt}>Téléphone:</p>
+                <div className={style.inputContainer}>
+                <input type="text" />
+                </div>
+            </div> 
+            <div className={style.containerInput_text}>
+                <p className={style.txt}>Email</p>
+                <div className={style.inputContainer}>
+                    <input type="text" />
+                </div>
+            </div> 
+            <div className={style.containerInput_text}>
+                <p className={style.txt}>Identifiant</p>
+                <div className={style.inputContainer}>
+                    <input type="text" />
+                </div>
+            </div> 
+        </div>
     
     </> 
     
