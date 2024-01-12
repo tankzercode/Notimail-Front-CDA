@@ -8,23 +8,26 @@ export const Navbar = () => {
     const user = useContext(UserContext)
     console.log(user)
 
-    
-    useEffect(()=> {
 
-    },[])
-    return(
+    useEffect(() => {
+
+    }, [])
+    return (
         <>
-                <header>
+            <header>
                 <div className={style.containerLogo}>
                     <img src={Logo} alt="" className={style.logo} />
                 </div>
-                    <div className={style.containerOfHeader}>
-                        <p className={style.entreprisegit}>
-                        {user.user.is_admin ? "Admin" : "Utilisateur" } </p> {/* il faudra faire des modifs pour que le nom de (du compte)l'entreprise s'affiche  */}
-                        <a href="#" className={style.disconnect}>Déconnexion</a>
-                    </div>
-                </header>
-                
+                <div className={style.containerOfHeader}>
+                    <p className={style.entreprisegit}>
+                        {user.user &&
+
+                            <p>{user.user.is_admin ? "Admin" : "Utilisateur"}</p>
+                        }</p> {/* il faudra faire des modifs pour que le nom de (du compte)l'entreprise s'affiche  */}
+                    <a href="#" className={style.disconnect}>Déconnexion</a>
+                </div>
+            </header>
+
         </>
     )
 }
