@@ -1,0 +1,21 @@
+.logoImg{
+   width: 170px; 
+}
+
+.containerImg{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+.txtEntreprise{
+    font-size: 32px;
+}
+.containerTxtEntreprise{
+    display: flex;
+}

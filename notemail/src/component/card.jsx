@@ -2,6 +2,7 @@ import { IoIosSearch } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
 import style from './card.module.css';
+import { useNavigate } from "react-router-dom";
 
 export const EntrepriseMoreDetails = (props) => {
     return (
@@ -25,7 +26,7 @@ export const EntrepriseMoreDetails = (props) => {
 
 
 export const Card = (props) => {
-
+const navigate = useNavigate()
     const [showDetails, setShowDetails] = useState(false)
   
     const handleCardClick = () => {
@@ -48,7 +49,9 @@ export const Card = (props) => {
                         <span className={style.knob}></span>
                     </label>
                     <button>
-                        <FaEdit style={{ color: 'var(--color2)' }} className={style.editButton} />
+                        <FaEdit onClick={()=> {
+                            navigate('editEntreprise',{ state: {test :''}})
+                        }} style={{ color: 'var(--color2)' }} className={style.editButton} />
                     </button>
                 </div>
             </div>
