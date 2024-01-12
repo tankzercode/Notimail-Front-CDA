@@ -24,6 +24,13 @@ const EntrepriseMoreDetails = () => {
     );
 };
 
+
+const [notifList, setNotifList] = useState([]);
+
+const addNotifEntreprise = () => {
+    
+}
+
 const Admin = () => {
     const [showDetails, setShowDetails] = useState(false)
   
@@ -46,7 +53,7 @@ const Admin = () => {
                             <p>19/09/2023</p>
                         </div>
                         <div className={style.entrepriseEdit}>
-                            <label className={style.toggleButton}>
+                            <label onChange={addNotifEntreprise} className={style.toggleButton}>
                                 <input type="checkbox" />
                                 <span className={style.knob}></span>
                             </label>
