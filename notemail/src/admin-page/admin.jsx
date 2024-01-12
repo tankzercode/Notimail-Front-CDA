@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { Card } from "../component/card";
+import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
@@ -32,12 +35,15 @@ const addNotifEntreprise = () => {
 }
 
 const Admin = () => {
-    const [showDetails, setShowDetails] = useState(false)
-  
-    const handleCardClick = () => {
-        setShowDetails(!showDetails);
-    };
-
+    const [list, setList] =useState([])
+    
+    useEffect(()=> { 
+        fetch('http://localhost:3000/user', {
+            credentials:'include'
+        }).then((res)=> {return res.json()}).then((resp)=> {console.log(resp)
+        setList(resp)
+        }).catch((err)=> {console.log(err)})
+    },[] )
     return (
         <>
             <div className={style.searchBarContainer}>
@@ -53,7 +59,7 @@ const Admin = () => {
                             <p>19/09/2023</p>
                         </div>
                         <div className={style.entrepriseEdit}>
-                            <label onChange={addNotifEntreprise} className={style.toggleButton}>
+                            <label className={style.toggleButton}>
                                 <input type="checkbox" />
                                 <span className={style.knob}></span>
                             </label>
@@ -64,13 +70,7 @@ const Admin = () => {
                     </div>
                     {showDetails && <EntrepriseMoreDetails></EntrepriseMoreDetails>}
                 </div>
-            </div>               
-            <div className={style.buttonSection}>
-                <div className={style.buttonContainer}>
-                    <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
-                    <button><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
-                </div>
-            </div>
+            </div>        
         </>
     );
 };
