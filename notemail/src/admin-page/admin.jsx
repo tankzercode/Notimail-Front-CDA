@@ -1,5 +1,7 @@
 import { IoIosSearch } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
+import { RiMailSendLine } from "react-icons/ri";
+import { IoMdAdd } from "react-icons/io";
 import style from './admin.module.css'
 import { useState } from "react";
 const EntrepriseMoreDetails = () => {
@@ -21,6 +23,13 @@ const EntrepriseMoreDetails = () => {
 
     );
 };
+
+
+const [notifList, setNotifList] = useState([]);
+
+const addNotifEntreprise = () => {
+    
+}
 
 const Admin = () => {
     const [showDetails, setShowDetails] = useState(false)
@@ -44,7 +53,7 @@ const Admin = () => {
                             <p>19/09/2023</p>
                         </div>
                         <div className={style.entrepriseEdit}>
-                            <label className={style.toggleButton}>
+                            <label onChange={addNotifEntreprise} className={style.toggleButton}>
                                 <input type="checkbox" />
                                 <span className={style.knob}></span>
                             </label>
@@ -55,7 +64,13 @@ const Admin = () => {
                     </div>
                     {showDetails && <EntrepriseMoreDetails></EntrepriseMoreDetails>}
                 </div>
-            </div>        
+            </div>               
+            <div className={style.buttonSection}>
+                <div className={style.buttonContainer}>
+                    <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
+                    <button><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
+                </div>
+            </div>
         </>
     );
 };
