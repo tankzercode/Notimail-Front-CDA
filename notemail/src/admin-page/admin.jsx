@@ -24,12 +24,9 @@ const [users ,setUsers] = useState([])
 
 
     }, [])
-    const [showDetails, setShowDetails] = useState(false)
-  const navigate =useNavigate()
-    const handleCardClick = () => {
-        setShowDetails(!showDetails);
-    };
 
+    const [notifList, setNotifList] = useState([]);
+   
     return (
         <>
     <div style={{marginTop:"25px"}}>
@@ -37,10 +34,11 @@ const [users ,setUsers] = useState([])
 
             return <div style={{marginBottom:"25px"}}  key={'user'+index}>
                 
-                <Card items={el} ></Card>
+                <Card items={el} setNotifList={setNotifList} ></Card>
           </div>
         })}
             </div>
+            {/* {JSON.stringify(notifList)} */}
         </>
     );
 };
