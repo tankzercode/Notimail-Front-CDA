@@ -6,6 +6,7 @@ import { Navbar } from './component/Navbar'
 import { User } from './component/User';
 import UserContext from './userContext';
 import Admin from './admin-page/admin'
+import { EditEntreprise } from './admin-page/editEntreprise';
 function App() {
 
   const [user, setUser] = React.useState(null)
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} ></Route>
           <Route path='/admin' element={<Admin />}> </Route>
+          <Route path='/admin/editEntreprise' element={<EditEntreprise />}> </Route>
 
           <Route path='/user' element={<User />}> </Route>
         </Routes>
