@@ -6,8 +6,11 @@ import { FaEdit } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
 import { IoMdAdd } from "react-icons/io";
 import style from './admin.module.css'
-import { useState } from "react";
+
+
 const EntrepriseMoreDetails = () => {
+    const [notifList, setNotifList] = useState([]);
+
     return (
         <div className={style.moreDetails}>
             <div className={style.infosContainer}>
@@ -28,22 +31,22 @@ const EntrepriseMoreDetails = () => {
 };
 
 
-const [notifList, setNotifList] = useState([]);
-
 const addNotifEntreprise = () => {
-    
+
 }
 
 const Admin = () => {
-    const [list, setList] =useState([])
-    
-    useEffect(()=> { 
+
+    const [list, setList] = useState([])
+
+    useEffect(() => {
         fetch('http://localhost:3000/user', {
-            credentials:'include'
-        }).then((res)=> {return res.json()}).then((resp)=> {console.log(resp)
-        setList(resp)
-        }).catch((err)=> {console.log(err)})
-    },[] )
+            credentials: 'include'
+        }).then((res) => { return res.json() }).then((resp) => {
+            console.log(resp)
+            setList(resp)
+        }).catch((err) => { console.log(err) })
+    }, [])
     return (
         <>
             <div className={style.searchBarContainer}>
@@ -70,7 +73,7 @@ const Admin = () => {
                     </div>
                     {showDetails && <EntrepriseMoreDetails></EntrepriseMoreDetails>}
                 </div>
-            </div>        
+            </div>
         </>
     );
 };
