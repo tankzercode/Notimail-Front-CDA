@@ -86,7 +86,17 @@ const Admin = () => {
         }
         <button>Annuler</button>
         <button onClick={()=>{
-            fetch('http://localhost:3000/send')
+            fetch('http://localhost:3000/send',{
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    firm_name: notifList,
+                })
+            })
         }}>Envoyer</button>
         </Modal>
         <br></br>
