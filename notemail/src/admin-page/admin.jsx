@@ -6,6 +6,7 @@ import style from './admin.module.css'
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Card } from "../component/card";
+import { Modal } from 'react-responsive-modal';
 
 
 
@@ -26,9 +27,13 @@ const [users ,setUsers] = useState([])
     }, [])
 
     const [notifList, setNotifList] = useState([]);
-   
+    
     return (
         <>
+            <Modal open={open} onClose={onCloseModal} center>
+                <h2>Simple centered modal</h2>
+            </Modal>
+
     <div style={{marginTop:"25px"}}>
         {users.map((el, index)=>{
 
