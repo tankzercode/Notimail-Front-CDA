@@ -25,7 +25,7 @@ export const EntrepriseMoreDetails = (props) => {
 
 
 export const Card = (props) => {
-    
+    console.log(props)
     // fonction basé sur un onChange qui s'active quand on active/desactive un input toggle
 
     // On récupere l'evenement et le firm_name (Pour identifier l'entreprise)
