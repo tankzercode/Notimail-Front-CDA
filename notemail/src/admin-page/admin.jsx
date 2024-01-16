@@ -66,6 +66,7 @@ const Admin = () => {
                 </div>
             </div>               
             <div className={style.buttonSection}>
+                jujèuuu
                 <div className={style.buttonContainer}>
                     <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
                     <button><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
