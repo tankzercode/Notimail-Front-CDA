@@ -6,6 +6,16 @@ import style from './edit.module.css'
 export const EditEntreprise = () => {
     const location = useLocation();
     console.log(location.state.test)
+    const handleGoBack = () => {
+        window.history.back();
+      };
+
+      
+
+
+
+
+
     return ( 
     <>
     
@@ -14,7 +24,7 @@ export const EditEntreprise = () => {
         </div>
 
         <div className={style.container}>
-            <button className={style.buttonRetour}><img src={Retour} alt="" /></button>
+            <button className={style.buttonRetour}  onClick={handleGoBack}><img src={Retour} alt="" /></button>
             <div className={style.containerTxtEntreprise}>
                 <p className={style.txtEntreprise}>Entreprise</p>
             </div>
