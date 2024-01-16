@@ -69,6 +69,12 @@ const Admin = () => {
     useEffect(()=>{
         console.log(notifList)
     },  [open])
+
+    const handleButtonClick = () => {
+        // Rediriger vers le composant editEntreprise
+        window.location.href = './editEntreprise';
+      };
+
     return (
         <>
         <Modal open={open} onClose={onCloseModal} center>
@@ -98,7 +104,7 @@ const Admin = () => {
         
         <div className={style.buttonSection}>
         <div className={style.buttonContainer}>
-        <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
+        <button onClick={handleButtonClick}><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
         <button onClick={()=>{setOpen(true)}}><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
         </div>
         </div>
