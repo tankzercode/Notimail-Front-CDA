@@ -19,43 +19,54 @@ export const EditEntreprise = () => {
                 <p className={style.txtEntreprise}>Entreprise</p>
             </div>
         </div>
-    <form>
-            <div className={style.containerInput_text}>
-                <p className={style.txt}>Entreprise:</p>
-                <div className={style.inputContainer}>
-                    <input type="text" />
-                </div>
-            </div>
-            <div className={style.containerInput_text}>
-                <p className={style.txt}>Contact:</p>
-                <div>
-                <div className={style.inputContainer}>
-                    <input type="text" placeholder="" />
-                </div>
-                <div className={style.inputContainer}>
-                    <input type="text" />
-                </div>
-            </div>
-            </div> 
-            <div className={style.containerInput_text}>
-                <p className={style.txt}>Téléphone:</p>
-                <div className={style.inputContainer}>
-                <input type="text" />
-                </div>
-            </div> 
-            <div className={style.containerInput_text}>
-                <p className={style.txt}>Email</p>
-                <div className={style.inputContainer}>
-                    <input type="text" />
-                </div>
-            </div> 
-            <div className={style.containerInput_text}>
-                <p className={style.txt}>Identifiant</p>
-                <div className={style.inputContainer}>
-                    <input type="text" />
-                </div>
-            </div> 
-    </form>
+    <div className={style.formContainer}>
+            <form className={style.edit_form}>
+                    <div className={style.containerInput_text}>
+                        <p className={style.txt}>Entreprise:</p>
+                        <div className={style.inputContainer}>
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div className={style.containerInput_text}>
+                        <p className={style.txt}>Contact:</p>
+                        <div>
+                        <div className={style.inputContainer}>
+                            <input type="text" placeholder="Nom" />
+                        </div>
+                        <div className={style.inputContainer}>
+                            <input type="text" placeholder="Prénom"/>
+                        </div>
+                    </div>
+                    </div> 
+                    <div className={style.containerInput_text}>
+                        <p className={style.txt}>Téléphone:</p>
+                        <div className={style.inputContainer}>
+                        <input type="text" />
+                        </div>
+                    </div> 
+                    <div className={style.containerInput_text}>
+                        <p className={style.txt}>Email</p>
+                        <div className={style.inputContainer}>
+                            <input type="text" />
+                        </div>
+                    </div> 
+                    <div className={style.containerInput_text}>
+                        <p className={style.txt}>Identifiant</p>
+                        <div className={style.inputContainer}>
+                            <input type="text" />
+                        </div>
+                    </div> 
+                    <div className={style.containerAdmin}>
+                        <p className={style.admintxt}>Admin</p>
+                        <input type="checkbox" className={style.checkboxSize}/>
+                    </div>
+
+                    <div>
+                        <button className={style.SupprButton}>Supprimer</button>
+                        <button className={style.TerminerButton}>Terminer</button>
+                    </div>
+            </form>
+    </div>
     </> 
     
     )

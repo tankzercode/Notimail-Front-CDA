@@ -25,7 +25,7 @@
 }
 
 .inputContainer {
-    width: 30%;
+    width: 141px;
     border-radius: 100px;
     height: 31px;
     background: #EEEE;
@@ -54,34 +54,79 @@
 .txt{
     font-size: 24px;
 }
-.containerAll{
-    display: flex;
-    flex-direction: column;
-}
 
 .containerInput_text{
     display: flex;
     margin-bottom: 10px;
 }
-.containerTxtInputUnique{
-    display: flex;
-}
 
-.containerContact{
-    display: flex;
-    flex-direction: column;
-    width: 8000px;
-}
-.AllContainerInput{
-    display: flex;
-
-}
 
 input{
-    width:400px;
+    width:100px;
 }
 
-form{
+.edit_form{
     display: flex;
-    align-items: center;
+    background-color: #E3E3E3;
+    flex-direction: column;
+    width: 20em;
+    align-items: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 50px 10px 30px 10px;
+    border-radius: 52px;
 }
+.formContainer{
+    display: flex;
+    justify-content: center;
+}
+.containerAdmin{
+    display: flex;
+}
+.checkboxSize{
+    width: 15px;
+    margin-bottom: 15px;
+    margin-left: 12px;
+}
+
+.SupprButton {
+	background-color:#ff3535;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	padding:10px 10px;
+	text-decoration:none;
+    margin-right: 70px;
+
+}
+.SupprButton:hover {
+	background-color:#e61c2d;
+}
+.SupprButton:active {
+	position:relative;
+	top:1px;
+}
+
+.TerminerButton{
+	background-color:#006C92;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	padding: 12px;
+	text-decoration:none;
+	
+}
+.TerminerButton:hover {
+	background-color:#005574;
+}
+.TerminerButton:active {
+	position:relative;
+	top:1px;
+}
+
