@@ -10,6 +10,17 @@ export const EditEntreprise = () => {
         window.history.back();
       };
 
+      const [entreprise, setEntreprise] = useState ('')
+      const [nom, setNom] = useState('')  
+      const [prenom, setPrenom] = useState('') 
+      const [phoneNumber, setPhoneNumber] = useState('') 
+      const [mail, setMail] = useState('') 
+      const [identifiant] = useState('') 
+      const [] = useState('') 
+  
+    
+
+
     return ( 
     <>
     
