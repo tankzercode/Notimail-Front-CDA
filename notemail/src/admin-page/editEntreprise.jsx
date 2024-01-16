@@ -8,6 +8,7 @@ export const EditEntreprise = () => {
     console.log(location.state.test)
     return ( 
     <>
+    
         <div className={style.containerImg}>
             <img src={Logo} alt="" className={style.logoImg} />
         </div>
@@ -18,8 +19,7 @@ export const EditEntreprise = () => {
                 <p className={style.txtEntreprise}>Entreprise</p>
             </div>
         </div>
-
-        <div className={style.containerAll}>
+    <form>
             <div className={style.containerInput_text}>
                 <p className={style.txt}>Entreprise:</p>
                 <div className={style.inputContainer}>
@@ -55,8 +55,7 @@ export const EditEntreprise = () => {
                     <input type="text" />
                 </div>
             </div> 
-        </div>
-    
+    </form>
     </> 
     
     )
