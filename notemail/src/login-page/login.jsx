@@ -4,17 +4,17 @@ import ArrowDown from '../assets/arrow-down.png'
 import LockLogin from '../assets/lock-login.png'
 import { useNavigate } from "react-router-dom";
 import style from './login.module.css'
-import userContext from '../component/context';
 import UserContext from '../userContext';
 
 const Login = () => {
+    const user = useContext(UserContext)
     /* useState pour contenir mes informations pour me connecter */
     const [entreprises, setEntreprises] = useState([]);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
 
-    const [user, setUser] = useState();
+    const navigate = useNavigate();
 
     // On crée un context nommé user
     console.log(user);
@@ -43,7 +43,6 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-    const navigate = useNavigate();
 
     // Fonction qui gère le comportement du submit
 
@@ -73,7 +72,7 @@ const Login = () => {
           .then((responseData) => {
             // On update notre const user avec l'objet user de notre reponse venant du back
             console.log(responseData);
-            setUser(responseData.user);
+            user.setUser(responseData.user)
             // Si is_admin de l'objet user === true, renvoie sur la page /admin, sinon /user
             if(responseData.user.is_admin) {
                 navigate('/admin')
@@ -91,7 +90,6 @@ const Login = () => {
     /* Contenu HTML de ma page login*/
     return (
         <>
-        <UserContext.Provider value={user}>
             <div className={style.loginContainer}>
                 <img src={Logo} className={style.logo} />
                 <form onSubmit={handleSubmit} action="">
@@ -109,10 +107,10 @@ const Login = () => {
                         </div>
                     </div>
                     <div className={style.inputContainer}>
-                        <input value={password} onChange={changePassword} type="password" required />
+                        <input  onChange={changePassword} type="password" required />
                         <div className={style.rightPart}>
                             <div className={style.backgroundLock}>
-                            <button type="submit" className={style.backgroundLock}>
+                            <button className={style.backgroundLock}>
                                 <img src={LockLogin} />
                             </button>
                             </div>
@@ -120,7 +118,6 @@ const Login = () => {
                     </div>
                 </form>
             </div>
-        </UserContext.Provider>
         </>
     )
 }

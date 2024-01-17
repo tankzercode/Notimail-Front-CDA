@@ -9,11 +9,9 @@ import Admin from './admin-page/admin'
 import { EditEntreprise } from './admin-page/editEntreprise';
 function App() {
 
-  const UserContext = createContext();
 
   const [user, setUser] = React.useState(null)
   useEffect(() => {
-    setUser("dsklfjdskflj")
   }, [])
   return (
     <>
