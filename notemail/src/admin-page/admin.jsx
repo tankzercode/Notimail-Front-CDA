@@ -63,6 +63,8 @@ const Admin = () => {
     const onCloseModal = () => setOpen(false);
     
     const handleCardClick = () => {
+        
+        
         setShowDetails(!showDetails);
     };
     
@@ -75,7 +77,7 @@ const Admin = () => {
         
         {notifList.map((el, index)=>{
             return <div  key={"fir_nameModal" + index}>
-            {el}
+            {el.firm_name}
             </div>
         })}
         
@@ -85,35 +87,69 @@ const Admin = () => {
             Aucun utilisateurs sélectionné</p>
         }
         <button>Annuler</button>
-        <button onClick={()=>{
+        <button onClick={  ()=>{
+            
+            const requestOptions = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ listNotif: notifList })
+            };
+            fetch('http://localhost:3000/send', requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data.data) ).catch(err => console.log(err));
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             fetch('http://localhost:3000/send',{
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    firm_name: notifList,
-                })
-            })
-        }}>Envoyer</button>
-        </Modal>
-        <br></br>
-        {users.map((el, index)=>{
-            return <div key={"cardUser" + index }>
-            <Card items={el} setNotifList={setNotifList} ></Card>
-            </div>
-        })}
-        
-        <div className={style.buttonSection}>
-        <div className={style.buttonContainer}>
-        <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
-        <button onClick={()=>{setOpen(true)}}><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
+            method: 'PUT',
+            headers: {
+                // Nous n'accepterons que le JSON en résultat.
+                'Accept': 'application/json',
+                // Dans le cas d'une requête contenant un body,
+                // par exemple une POST ou PUT, on définit le format du body.
+                'Content-Type': 'application/json',
+                
+            },
+            body: {
+                "listNotif":notifList
+            }
+        }).then((res)=> {
+            
+            return res.json()
+            
+        }).then((resp)=> {
+            console.log(resp)
+        }
+        ).catch((err)=> {console.log(err)})
+    }}>Envoyer</button>
+    </Modal>
+    <br></br>
+    {users.map((el, index)=>{
+        return <div key={"cardUser" + index }>
+        <Card items={el} setNotifList={setNotifList} ></Card>
         </div>
-        </div>
-        </>
-        );
-    };
+    })}
     
-    export default Admin
+    <div className={style.buttonSection}>
+    <div className={style.buttonContainer}>
+    <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
+    <button onClick={()=>{setOpen(true)}}><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
+    </div>
+    </div>
+    </>
+    );
+};
+
+export default Admin

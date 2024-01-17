@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import Login from './login-page/login'
 import './App.css'
@@ -8,6 +8,8 @@ import UserContext from './userContext';
 import Admin from './admin-page/admin'
 import { EditEntreprise } from './admin-page/editEntreprise';
 function App() {
+
+  const UserContext = createContext();
 
   const [user, setUser] = React.useState(null)
   useEffect(() => {

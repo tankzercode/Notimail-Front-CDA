@@ -5,6 +5,7 @@ import LockLogin from '../assets/lock-login.png'
 import { useNavigate } from "react-router-dom";
 import style from './login.module.css'
 import userContext from '../component/context';
+import UserContext from '../userContext';
 
 const Login = () => {
     /* useState pour contenir mes informations pour me connecter */
@@ -13,14 +14,15 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
 
-    // On crée un context nommé user
-    const user = useContext(userContext);
+    const [user, setUser] = useState();
 
+    // On crée un context nommé user
+    console.log(user);
     // requete API, qu'on ajoute au useState entreprises sous forme de tableau
     useEffect(() => {
         fetch(`http://localhost:3000/user`, {
         withCredential: true,    
-        headers : {"Content-Type" : "application/json"}})
+        })
         .then((res) => {
             return res.json()
         }).then((res) => {
@@ -55,12 +57,12 @@ const Login = () => {
             method: 'POST',
             credentials: 'include',
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
             body: JSON.stringify({
-                firm_name: `${username}`,
-                password: `${password}`,
+                firm_name: username,
+                password: password,
             })
         })
           .then((res) => {
@@ -70,7 +72,8 @@ const Login = () => {
           })
           .then((responseData) => {
             // On update notre const user avec l'objet user de notre reponse venant du back
-            user.setUser(responseData.user);
+            console.log(responseData);
+            setUser(responseData.user);
             // Si is_admin de l'objet user === true, renvoie sur la page /admin, sinon /user
             if(responseData.user.is_admin) {
                 navigate('/admin')
@@ -88,6 +91,7 @@ const Login = () => {
     /* Contenu HTML de ma page login*/
     return (
         <>
+        <UserContext.Provider value={user}>
             <div className={style.loginContainer}>
                 <img src={Logo} className={style.logo} />
                 <form onSubmit={handleSubmit} action="">
@@ -116,6 +120,7 @@ const Login = () => {
                     </div>
                 </form>
             </div>
+        </UserContext.Provider>
         </>
     )
 }
