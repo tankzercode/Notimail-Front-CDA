@@ -6,13 +6,10 @@ import style from './admin.module.css'
 import { useEffect, useState } from "react";
 import Modal from "react-responsive-modal";
 import { Card } from "../component/card";
+import { useNavigate } from "react-router-dom";
 
 import axios from 'axios'
 
-
-const addNotifEntreprise = () => {
-    
-}
 
 const users = [{
     "firm_name": "firm_name 1",
@@ -67,10 +64,14 @@ const Admin = () => {
         
         setShowDetails(!showDetails);
     };
-    
+    const navigate = useNavigate()
+
     useEffect(()=>{
         console.log(notifList)
     },  [open])
+
+
+
     return (
         <>
         <Modal open={open} onClose={onCloseModal} center>
@@ -107,8 +108,8 @@ const Admin = () => {
     
     <div className={style.buttonSection}>
     <div className={style.buttonContainer}>
-    <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
-    <button onClick={()=>{setOpen(true)}}><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
+    <button onClick={()=>{navigate('/admin/ajouterEntreprise')}}><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
+     <button onClick={()=>{setOpen(true)}} ><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button> 
     </div>
     </div>
     </>

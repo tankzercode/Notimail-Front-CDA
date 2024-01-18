@@ -1,9 +1,9 @@
 import { useLocation, useParams } from "react-router-dom"
 import Logo from "../assets/LogoByMathysG.jpg"
 import Retour from "../assets/retour.png"
-import style from './edit.module.css'
+import style from './ajouterEntreprise.module.css'
 
-export const EditEntreprise = () => {
+export const AjouterEntreprise = () => {
     const location = useLocation();
  
     const handleGoBack = () => {
