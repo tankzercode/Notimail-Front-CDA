@@ -2,6 +2,7 @@ import { IoIosSearch } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
 import style from './card.module.css';
+import { useNavigate } from "react-router-dom";
 
 export const EntrepriseMoreDetails = (props) => {
     return (
