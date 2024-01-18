@@ -6,13 +6,10 @@ import style from './admin.module.css'
 import { useEffect, useState } from "react";
 import Modal from "react-responsive-modal";
 import { Card } from "../component/card";
+import { useNavigate } from "react-router-dom";
 
 
 
-
-const addNotifEntreprise = () => {
-    
-}
 
 const users = [{
     "firm_name": "firm_name 1",
@@ -65,15 +62,13 @@ const Admin = () => {
     const handleCardClick = () => {
         setShowDetails(!showDetails);
     };
-    
+    const navigate = useNavigate()
+
     useEffect(()=>{
         console.log(notifList)
     },  [open])
 
-    const handleButtonClick = () => {
-        // Rediriger vers le composant editEntreprise
-        window.location.href = './editEntreprise';
-      };
+
 
     return (
         <>
@@ -104,8 +99,8 @@ const Admin = () => {
         
         <div className={style.buttonSection}>
         <div className={style.buttonContainer}>
-        <button onClick={handleButtonClick}><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
-        <button onClick={()=>{setOpen(true)}}><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
+        <button onClick={()=>{navigate('/admin/ajouterEntreprise')}}><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
+         <button onClick={()=>{setOpen(true)}} ><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button> 
         </div>
         </div>
         </>
