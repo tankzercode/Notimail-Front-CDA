@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Modal from "react-responsive-modal";
 import { Card } from "../component/card";
 
-
+import axios from 'axios'
 
 
 const addNotifEntreprise = () => {
@@ -88,51 +88,14 @@ const Admin = () => {
         }
         <button>Annuler</button>
         <button onClick={  ()=>{
-            
-            const requestOptions = {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ listNotif: notifList })
-            };
-            fetch('http://localhost:3000/send', requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data.data) ).catch(err => console.log(err));
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            fetch('http://localhost:3000/send',{
-            method: 'PUT',
-            headers: {
-                // Nous n'accepterons que le JSON en résultat.
-                'Accept': 'application/json',
-                // Dans le cas d'une requête contenant un body,
-                // par exemple une POST ou PUT, on définit le format du body.
-                'Content-Type': 'application/json',
-                
-            },
-            body: {
-                "listNotif":notifList
-            }
-        }).then((res)=> {
-            
-            return res.json()
-            
-        }).then((resp)=> {
-            console.log(resp)
-        }
-        ).catch((err)=> {console.log(err)})
+            axios.put('http://localhost:3000/send', {notifList: notifList}, {
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+                    "Access-Control-Allow-Origin": "http://localhost:3000",
+                }
+            } ).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)})
+    
     }}>Envoyer</button>
     </Modal>
     <br></br>

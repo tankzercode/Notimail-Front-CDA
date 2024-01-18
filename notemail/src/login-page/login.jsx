@@ -26,6 +26,7 @@ const Login = () => {
         .then((res) => {
             return res.json()
         }).then((res) => {
+            console.log(res)
             // On update le useState entreprises pour qu'il contienne la liste des entreprises sous forme de tableau
             setEntreprises(res)
         })
