@@ -33,14 +33,16 @@ export const Card = (props) => {
     const handleCheckboxChange = (e, firm_name) => {
         // Si checked est en true execute le code ci-dessous
         if (e.target.checked) {
-            props.setNotifList(prev => [...prev, firm_name])
+            props.setNotifList(prev => [...prev, {firm_name:firm_name}])
         } // Je target l'element du tableau qui contient le firm_name que je veux supprimer.
         else {
             // prev represente notifList. Avec filter, on filtre notre tableau pour en recréer un sans l'element firm_name (Celui qu'on veut supprimer). item symbolise chaque element du tableau notifList
-            props.setNotifList(prev => prev.filter(item => item !== firm_name))            
+            props.setNotifList(prev => prev.filter(item => item.firm_name !== firm_name))            
         }
     }
     
+
+
     const [showDetails, setShowDetails] = useState(false)
   
     const handleCardClick = () => {

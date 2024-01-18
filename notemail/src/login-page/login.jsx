@@ -4,26 +4,29 @@ import ArrowDown from '../assets/arrow-down.png'
 import LockLogin from '../assets/lock-login.png'
 import { useNavigate } from "react-router-dom";
 import style from './login.module.css'
-import userContext from '../component/context';
+import UserContext from '../userContext';
 
 const Login = () => {
+    const user = useContext(UserContext)
     /* useState pour contenir mes informations pour me connecter */
     const [entreprises, setEntreprises] = useState([]);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
 
-    // On crée un context nommé user
-    const user = useContext(userContext);
+    const navigate = useNavigate();
 
+    // On crée un context nommé user
+    console.log(user);
     // requete API, qu'on ajoute au useState entreprises sous forme de tableau
     useEffect(() => {
         fetch(`http://localhost:3000/user`, {
         withCredential: true,    
-        headers : {"Content-Type" : "application/json"}})
+        })
         .then((res) => {
             return res.json()
         }).then((res) => {
+            console.log(res)
             // On update le useState entreprises pour qu'il contienne la liste des entreprises sous forme de tableau
             setEntreprises(res)
         })
@@ -41,7 +44,6 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-    const navigate = useNavigate();
 
     // Fonction qui gère le comportement du submit
 
@@ -55,12 +57,12 @@ const Login = () => {
             method: 'POST',
             credentials: 'include',
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
             body: JSON.stringify({
-                firm_name: `${username}`,
-                password: `${password}`,
+                firm_name: username,
+                password: password,
             })
         })
           .then((res) => {
@@ -70,7 +72,8 @@ const Login = () => {
           })
           .then((responseData) => {
             // On update notre const user avec l'objet user de notre reponse venant du back
-            user.setUser(responseData.user);
+            console.log(responseData);
+            user.setUser(responseData.user)
             // Si is_admin de l'objet user === true, renvoie sur la page /admin, sinon /user
             if(responseData.user.is_admin) {
                 navigate('/admin')
@@ -105,10 +108,10 @@ const Login = () => {
                         </div>
                     </div>
                     <div className={style.inputContainer}>
-                        <input value={password} onChange={changePassword} type="password" required />
+                        <input  onChange={changePassword} type="password" required />
                         <div className={style.rightPart}>
                             <div className={style.backgroundLock}>
-                            <button type="submit" className={style.backgroundLock}>
+                            <button className={style.backgroundLock}>
                                 <img src={LockLogin} />
                             </button>
                             </div>

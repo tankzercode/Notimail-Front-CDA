@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Modal from "react-responsive-modal";
 import { Card } from "../component/card";
 
-
+import axios from 'axios'
 
 
 const addNotifEntreprise = () => {
@@ -63,6 +63,8 @@ const Admin = () => {
     const onCloseModal = () => setOpen(false);
     
     const handleCardClick = () => {
+        
+        
         setShowDetails(!showDetails);
     };
     
@@ -75,7 +77,7 @@ const Admin = () => {
         
         {notifList.map((el, index)=>{
             return <div  key={"fir_nameModal" + index}>
-            {el}
+            {el.firm_name}
             </div>
         })}
         
@@ -85,35 +87,32 @@ const Admin = () => {
             Aucun utilisateurs sélectionné</p>
         }
         <button>Annuler</button>
-        <button onClick={()=>{
-            fetch('http://localhost:3000/send',{
-                method: 'POST',
+        <button onClick={  ()=>{
+            axios.put('http://localhost:3000/send', {notifList: notifList}, {
+                withCredentials: true,
                 credentials: 'include',
                 headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    firm_name: notifList,
-                })
-            })
-        }}>Envoyer</button>
-        </Modal>
-        <br></br>
-        {users.map((el, index)=>{
-            return <div key={"cardUser" + index }>
-            <Card items={el} setNotifList={setNotifList} ></Card>
-            </div>
-        })}
-        
-        <div className={style.buttonSection}>
-        <div className={style.buttonContainer}>
-        <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
-        <button onClick={()=>{setOpen(true)}}><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
-        </div>
-        </div>
-        </>
-        );
-    };
+                    "Access-Control-Allow-Origin": "http://localhost:3000",
+                }
+            } ).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)})
     
-    export default Admin
+    }}>Envoyer</button>
+    </Modal>
+    <br></br>
+    {users.map((el, index)=>{
+        return <div key={"cardUser" + index }>
+        <Card items={el} setNotifList={setNotifList} ></Card>
+        </div>
+    })}
+    
+    <div className={style.buttonSection}>
+    <div className={style.buttonContainer}>
+    <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
+    <button onClick={()=>{setOpen(true)}}><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
+    </div>
+    </div>
+    </>
+    );
+};
+
+export default Admin
