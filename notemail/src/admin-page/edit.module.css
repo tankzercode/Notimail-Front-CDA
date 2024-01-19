@@ -1,0 +1,132 @@
+.logoImg{
+   width: 170px; 
+}
+
+.containerImg{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+.txtEntreprise{
+    font-size: 32px;
+}
+.containerTxtEntreprise{
+    display: flex;
+}
+
+.buttonRetour{
+    padding-bottom: 25px;
+}
+
+.inputContainer {
+    width: 141px;
+    border-radius: 100px;
+    height: 31px;
+    background: #EEEE;
+    display: grid;
+    grid-template-columns: 80% 10%;
+    grid-template-rows: 100%;
+    margin-top: 6px;
+    margin-left: 38px;
+  }
+  
+  .inputContainer input,
+  .inputContainer select {
+    padding-left: 20px;
+    background: transparent;
+    border: none;
+  }
+  
+  select {
+    appearance: none;
+  }
+  
+  input:focus,
+  select:focus {
+    outline: none;
+  }
+.txt{
+    font-size: 24px;
+}
+
+.containerInput_text{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+input{
+    width:100px;
+}
+
+.edit_form{
+    display: flex;
+    background-color: #E3E3E3;
+    flex-direction: column;
+    width: 20em;
+    align-items: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 50px 10px 30px 10px;
+    border-radius: 52px;
+}
+.formContainer{
+    display: flex;
+    justify-content: center;
+}
+.containerAdmin{
+    display: flex;
+}
+.checkboxSize{
+    width: 15px;
+    margin-bottom: 15px;
+    margin-left: 12px;
+}
+
+.SupprButton {
+	background-color:#ff3535;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	padding:10px 10px;
+	text-decoration:none;
+    margin-right: 70px;
+
+}
+.SupprButton:hover {
+	background-color:#e61c2d;
+}
+.SupprButton:active {
+	position:relative;
+	top:1px;
+}
+
+.TerminerButton{
+	background-color:#006C92;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	padding: 12px;
+	text-decoration:none;
+	
+}
+.TerminerButton:hover {
+	background-color:#005574;
+}
+.TerminerButton:active {
+	position:relative;
+	top:1px;
+}
+

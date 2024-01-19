@@ -1,87 +1,118 @@
-import { useEffect } from "react";
-import { Card } from "../component/card";
-import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
 import { IoMdAdd } from "react-icons/io";
 import style from './admin.module.css'
+import { useEffect, useState } from "react";
+import Modal from "react-responsive-modal";
+import { Card } from "../component/card";
+import { useNavigate } from "react-router-dom";
+
+import axios from 'axios'
 
 
-const EntrepriseMoreDetails = () => {
-    const [notifList, setNotifList] = useState([]);
-
-    return (
-        <div className={style.moreDetails}>
-            <div className={style.infosContainer}>
-                <div className={style.infoTitle}>Email:</div>
-                <div>adresse-email@exemple.com</div>
-            </div>
-            <div className={style.infosContainer}>
-                <div className={style.infoTitle}>Téléphone:</div>
-                <div>0123456789</div>
-            </div>
-            <div className={style.infosContainer}>
-                <div className={style.infoTitle}>Identifiant:</div>
-                <div>1337</div>
-            </div>
-        </div>
-
-    );
-};
-
-
-const addNotifEntreprise = () => {
-
-}
+const users = [{
+    "firm_name": "firm_name 1",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "phone_number": "1234567890",
+    "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    "last_received_mail": "2024-01-15T12:00:00.000Z",
+    "last_picked_up": "2024-01-15T12:00:00.000Z",
+    "has_mail": true,
+    "is_admin": false,
+    "updatedAt": "2024-01-16T13:26:47.528Z",
+    "createdAt": "2024-01-16T13:26:47.528Z"
+}, {
+    "firm_name": "firm_name 2",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "phone_number": "1234567890",
+    "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    "last_received_mail": "2024-01-15T12:00:00.000Z",
+    "last_picked_up": "2024-01-15T12:00:00.000Z",
+    "has_mail": true,
+    "is_admin": false,
+    "updatedAt": "2024-01-16T13:26:47.528Z",
+    "createdAt": "2024-01-16T13:26:47.528Z"
+}, {
+    "firm_name": "firm_name 3",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "phone_number": "1234567890",
+    "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    "last_received_mail": "2024-01-15T12:00:00.000Z",
+    "last_picked_up": "2024-01-15T12:00:00.000Z",
+    "has_mail": true,
+    "is_admin": false,
+    "updatedAt": "2024-01-16T13:26:47.528Z",
+    "createdAt": "2024-01-16T13:26:47.528Z"
+}]
 
 const Admin = () => {
+    const [notifList, setNotifList] = useState([]);
+    
+    const [showDetails, setShowDetails] = useState(false)
+    const [open, setOpen] = useState(false);
+    const onCloseModal = () => setOpen(false);
+    
+    const handleCardClick = () => {
+        
+        
+        setShowDetails(!showDetails);
+    };
+    const navigate = useNavigate()
 
-    const [list, setList] = useState([])
+    useEffect(()=>{
+        console.log(notifList)
+    },  [open])
 
-    useEffect(() => {
-        fetch('http://localhost:3000/user', {
-            credentials: 'include'
-        }).then((res) => { return res.json() }).then((resp) => {
-            console.log(resp)
-            setList(resp)
-        }).catch((err) => { console.log(err) })
-    }, [])
+
+
     return (
         <>
-            <div className={style.searchBarContainer}>
-                <IoIosSearch />
-                <input className={style.searchBarContainer.input} type="text" placeholder="Rechercher" />
+        <Modal open={open} onClose={onCloseModal} center>
+        
+        {notifList.map((el, index)=>{
+            return <div  key={"fir_nameModal" + index}>
+            {el.firm_name}
             </div>
-            <div className={style.entrepriseListContainer}>
-                <div className={style.moreDetailsContainer} onClick={handleCardClick}>
-                    <div className={style.entrepriseCard}>
-                        <div className={style.entrepriseInfos}>
-                            <h3>Entreprise 1</h3>
-                            <p>Nom contact</p>
-                            <p>19/09/2023</p>
-                        </div>
-                        <div className={style.entrepriseEdit}>
-                            <label className={style.toggleButton}>
-                                <input type="checkbox" />
-                                <span className={style.knob}></span>
-                            </label>
-                            <button>
-                                <FaEdit style={{ color: 'var(--color2)' }} className={style.editButton} />
-                            </button>
-                        </div>
-                    </div>
-                    {showDetails && <EntrepriseMoreDetails></EntrepriseMoreDetails>}
-                </div>
-            </div>               
-            <div className={style.buttonSection}>
-                jujèuuu
-                <div className={style.buttonContainer}>
-                    <button><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
-                    <button><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button>
-                </div>
-            </div>
-        </>
+        })}
+        
+        {!notifList[0] && 
+            <p>
+            <br></br>
+            Aucun utilisateurs sélectionné</p>
+        }
+        <button>Annuler</button>
+        <button onClick={  ()=>{
+            axios.put('http://localhost:3000/send', {notifList: notifList}, {
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+                    "Access-Control-Allow-Origin": "http://localhost:3000",
+                }
+            } ).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)})
+    
+    }}>Envoyer</button>
+    </Modal>
+    <br></br>
+    {users.map((el, index)=>{
+        return <div key={"cardUser" + index }>
+        <Card items={el} setNotifList={setNotifList} ></Card>
+        </div>
+    })}
+    
+    <div className={style.buttonSection}>
+    <div className={style.buttonContainer}>
+    <button onClick={()=>{navigate('/admin/ajouterEntreprise')}}><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
+     <button onClick={()=>{setOpen(true)}} ><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button> 
+    </div>
+    </div>
+    </>
     );
 };
 
