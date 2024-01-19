@@ -11,19 +11,6 @@ export const AjouterEntreprise = () => {
         window.history.back();
     };
     
-    //   const [entrepriseName, setEntrepriseName] = useState('');
-    //   const [firstName, setFirstName] = useState('');
-    //   const [lastName, setLastName] = useState('');
-    //   const [phone, setPhone] = useState('');
-    //   const [email, setEmail] = useState('');
-    //   const [password, setPassword] = useState('');
-    //   const [isAdmin, setIsAdmin] = useState(false);
-    
-    //   const handleChangeEntrepriseName = e => {
-    //     setEntrepriseName(e.target.value)
-    //   }
-    
-    
     const [formData, setFormData] = useState({
         firm_name: '',
         first_name: '',
@@ -31,13 +18,14 @@ export const AjouterEntreprise = () => {
         email: '',
         phone_number: '',
         password: '',
-  
         has_mail: false,
-        is_admin: false,
-    
+        is_admin: false
     })
     
     const handleInputChange = (e) => {
+
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
         
         if (e.target.checked && e.target.name ==='is_admin') {
             setFormData({ ...formData, is_admin: true});
