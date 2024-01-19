@@ -43,56 +43,6 @@ export const EditEntreprise = () => {
     };
      
     
-    //   const [firm_name, setFirm_name] = useState("")
-    //   const [last_name, setLast_name] = useState("")
-    //   const [first_name, setFirst_name] = useState("")
-    //   const [phone_number, setPhone_number] = useState("")
-    //   const [email, setEmail] = useState("")
-    //   const [password, setPassword] = useState("")
-    
-    //   const changeEntreprise = e => {  
-    //     setFirm_name(e.target.value)
-    // }
-    
-    // const changeLast_name = e => {  
-    //     setLast_name(e.target.value)
-    // }
-    
-    // const changeFirst_name = e => {    
-    //     setFirst_name(e.target.value)
-    // }
-    
-    // const changePhone_number= e => {  
-    //     setPhone_number(e.target.value)
-    // }
-    
-    // const changeEmail = e => {
-    //     setEmail(e.target.value)
-    // }
-    
-    // const changePassword = e => {
-    //     setPassword(e.target.value)
-    // }
-    
-    
-    // fetch('http://localhost:3000/send',{
-    //     method: 'PUT',
-    //     credentials: 'include',
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         // 'Content-Type': 'application/x-www-form-urlencoded',
-    //       },
-    //     body: JSON.stringify({
-    //         // firm_name: firm_name,
-    //         // Last_name: last_name,
-    //         // first_name: first_name,
-    //         // phone_number: phone_number,
-    //         // email: email,
-    //         // password: password,
-    
-    //     })
-    // })
-    
     return ( 
         <form onSubmit={handleSubmit}>
         
