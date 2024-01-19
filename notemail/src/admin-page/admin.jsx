@@ -10,8 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 import axios from 'axios'
 
-const [users, setUsers] = useState([]);
-
 fetch(`http://localhost:3000/user`, {
     withCredential: true,    
     })
