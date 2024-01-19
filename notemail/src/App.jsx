@@ -8,6 +8,7 @@ import UserContext from './userContext';
 import Admin from './admin-page/admin'
 import { EditEntreprise } from './admin-page/editEntreprise';
 import { AjouterEntreprise } from './admin-page/ajouterEntreprise';
+import { AdminGuard } from './PrivateRoute/adminGuard';
 
 function App() {
   
@@ -24,9 +25,12 @@ function App() {
   
   <Routes>
   <Route path="/" element={<Login />} ></Route>
-  <Route path='/admin' element={<Admin />}></Route>
-  <Route path='/admin/editEntreprise' element={<EditEntreprise />}> </Route>
-  <Route path='/admin/ajouterEntreprise' element={<AjouterEntreprise />}> </Route>
+
+  <Route path='/admin' element={<AdminGuard/>}>
+    <Route path='' element={<Admin />}></Route>
+    <Route path='editEntreprise' element={<EditEntreprise />}> </Route>
+    <Route path='ajouterEntreprise' element={<AjouterEntreprise />}> </Route>
+  </Route>
   
   <Route path='/user' element={<User />}> </Route>
   </Routes>
