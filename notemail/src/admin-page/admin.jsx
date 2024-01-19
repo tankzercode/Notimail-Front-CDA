@@ -12,7 +12,7 @@ import axios from 'axios'
 
 
 const users = [{
-    "firm_name": "firm_name 1",
+    "firm_name": "firm_name1",
     "first_name": "John",
     "last_name": "Doe",
     "email": "john.doe@example.com",
@@ -25,7 +25,7 @@ const users = [{
     "updatedAt": "2024-01-16T13:26:47.528Z",
     "createdAt": "2024-01-16T13:26:47.528Z"
 }, {
-    "firm_name": "firm_name 2",
+    "firm_name": "firm_name2",
     "first_name": "John",
     "last_name": "Doe",
     "email": "john.doe@example.com",
@@ -38,7 +38,7 @@ const users = [{
     "updatedAt": "2024-01-16T13:26:47.528Z",
     "createdAt": "2024-01-16T13:26:47.528Z"
 }, {
-    "firm_name": "firm_name 3",
+    "firm_name": "firm_name1",
     "first_name": "John",
     "last_name": "Doe",
     "email": "john.doe@example.com",
