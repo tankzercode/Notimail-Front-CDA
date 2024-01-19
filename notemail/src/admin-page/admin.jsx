@@ -10,19 +10,21 @@ import { useNavigate } from "react-router-dom";
 
 import axios from 'axios'
 
-fetch(`http://localhost:3000/user`, {
-    withCredential: true,    
-    })
-    .then((res) => {
-        return res.json()
-    }).then((res) => {
-        console.log(res)
-        // On update le useState entreprises pour qu'il contienne la liste des entreprises sous forme de tableau
-        setEntreprises(res)
-    })
-
 // const users = [{
-//     "firm_name": "firm_name 1",
+    //     "firm_name": "firm_name1",
+    //     "first_name": "John",
+    //     "last_name": "Doe",
+    //     "email": "john.doe@example.com",
+    //     "phone_number": "1234567890",
+    //     "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    //     "last_received_mail": "2024-01-15T12:00:00.000Z",
+//     "last_picked_up": "2024-01-15T12:00:00.000Z",
+//     "has_mail": true,
+//     "is_admin": false,
+//     "updatedAt": "2024-01-16T13:26:47.528Z",
+//     "createdAt": "2024-01-16T13:26:47.528Z"
+// }, {
+//     "firm_name": "firm_name2",
 //     "first_name": "John",
 //     "last_name": "Doe",
 //     "email": "john.doe@example.com",
@@ -35,34 +37,37 @@ fetch(`http://localhost:3000/user`, {
 //     "updatedAt": "2024-01-16T13:26:47.528Z",
 //     "createdAt": "2024-01-16T13:26:47.528Z"
 // }, {
-//     "firm_name": "firm_name 2",
-//     "first_name": "John",
-//     "last_name": "Doe",
-//     "email": "john.doe@example.com",
-//     "phone_number": "1234567890",
-//     "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
-//     "last_received_mail": "2024-01-15T12:00:00.000Z",
-//     "last_picked_up": "2024-01-15T12:00:00.000Z",
-//     "has_mail": true,
-//     "is_admin": false,
-//     "updatedAt": "2024-01-16T13:26:47.528Z",
-//     "createdAt": "2024-01-16T13:26:47.528Z"
-// }, {
-//     "firm_name": "firm_name 3",
-//     "first_name": "John",
-//     "last_name": "Doe",
-//     "email": "john.doe@example.com",
-//     "phone_number": "1234567890",
-//     "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
-//     "last_received_mail": "2024-01-15T12:00:00.000Z",
-//     "last_picked_up": "2024-01-15T12:00:00.000Z",
-//     "has_mail": true,
-//     "is_admin": false,
-//     "updatedAt": "2024-01-16T13:26:47.528Z",
-//     "createdAt": "2024-01-16T13:26:47.528Z"
-// }]
+    //     "firm_name": "firm_name1",
+    //     "first_name": "John",
+    //     "last_name": "Doe",
+    //     "email": "john.doe@example.com",
+    //     "phone_number": "1234567890",
+    //     "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    //     "last_received_mail": "2024-01-15T12:00:00.000Z",
+    //     "last_picked_up": "2024-01-15T12:00:00.000Z",
+    //     "has_mail": true,
+    //     "is_admin": false,
+    //     "updatedAt": "2024-01-16T13:26:47.528Z",
+    //     "createdAt": "2024-01-16T13:26:47.528Z"
+    // }]
+    
+    const Admin = () => {
 
-const Admin = () => {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/user`, {
+            withCredential: true,
+        })
+        .then ((res) => {
+            return res.json()
+        })
+        .then ((data) => {
+            setUsers(data);
+        })
+        .catch ((err) => (console.log(err)))
+    }, [])
+
     const [notifList, setNotifList] = useState([]);
     
     const [showDetails, setShowDetails] = useState(false)
@@ -76,11 +81,9 @@ const Admin = () => {
     };
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        console.log(notifList)
-    },  [open])
-
-
+    // useEffect(()=>{
+    //     console.log(notifList)
+    // },  [open])
 
     return (
         <>
