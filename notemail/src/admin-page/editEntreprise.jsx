@@ -138,7 +138,7 @@ export const EditEntreprise = () => {
                         />
                     </div>
 
-                    
+
 
                     <div>
                         {console.log(location.state.firm_name)}
@@ -149,14 +149,14 @@ export const EditEntreprise = () => {
                                     "Content-Type": "application/json"
                                 }
                             })
-                            .then((res) => {
-                                return res.json();
-                            })
-                            .then((responseData) => {
-                                console.log(responseData.message);
-                                handleGoBack();
-                            })
-                            .catch((err) => console.log(err));
+                                .then((res) => {
+                                    return res.json();
+                                })
+                                .then((responseData) => {
+                                    console.log(responseData.message);
+                                    handleGoBack();
+                                })
+                                .catch((err) => console.log(err));
                         }} className={style.SupprButton}>
                             Supprimer
                         </button>
@@ -165,6 +165,7 @@ export const EditEntreprise = () => {
                             type="submit"
                             onClick={() => {
                                 console.log(formData)
+                                handleGoBack();
                             }}
                         >Terminer</button>
                     </div>
