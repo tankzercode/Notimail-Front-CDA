@@ -2,7 +2,7 @@ import { useLocation, useParams } from "react-router-dom"
 import Logo from "../assets/LogoByMathysG.jpg"
 import Retour from "../assets/retour.png"
 import style from './edit.module.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 
 export const EditEntreprise = () => {
@@ -42,6 +42,9 @@ export const EditEntreprise = () => {
             .catch((err) => { setError(err.response.data.message) })
     };
 
+    // useEffect (() => {
+    //     console.log(location.state.firm_name);
+    // }, [])
 
     return (
         <form onSubmit={handleSubmit}>
@@ -135,8 +138,28 @@ export const EditEntreprise = () => {
                         />
                     </div>
 
+                    
+
                     <div>
-                        <button className={style.SupprButton}>Supprimer</button>
+                        {console.log(location.state.firm_name)}
+                        <button onClick={() => {
+                            fetch(`http://localhost:3000/user/${location.state.firm_name}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    "Content-Type": "application/json"
+                                }
+                            })
+                            .then((res) => {
+                                return res.json();
+                            })
+                            .then((responseData) => {
+                                console.log(responseData.message);
+                                handleGoBack();
+                            })
+                            .catch((err) => console.log(err));
+                        }} className={style.SupprButton}>
+                            Supprimer
+                        </button>
                         <button
                             className={style.TerminerButton}
                             type="submit"
