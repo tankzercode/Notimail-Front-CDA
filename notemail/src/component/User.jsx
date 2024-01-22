@@ -1,5 +1,6 @@
 import style from '../css/user.module.css'
 import Mail from "../assets/MailNotif.png"
+import MailChecked from "../assets/MailNotifChecked.png"
 import Yes from "../assets/yes.png"
 import No from "../assets/no.png"
 import { Modal } from 'react-responsive-modal';
@@ -14,39 +15,48 @@ export const User = () => {
   const user = useContext(UserContext)
   console.log(user)
   const notifyMail = () => {
-    fetch('http://localhost:3000/users/root', {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-
+    fetch('http://localhost:3000/user/' + user.user.firm_name, {
+      method: "PUT", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       }
-    }).then((res) => { return res }).then((resp) => {
-      console.log(resp.json())
-      return resp.json()
-    }).catch((err) => {
-      console.log(err)
     })
+      .then((res) => { return res.json() })
+      .then((resp) => {
+        // console.log(resp.updateUser.has_mail)
+        user.setUser(resp.updateUser.has_mail = true)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
+
+
   console.log(user)
   return (
     <>
       <div className={style.containerComponent}>
         <div className={style.logoMail}>
-          <img src={Mail} alt="" />
-        </div>{user.user &&
-          <>
-            {user.user.has_mail &&
-              <p className={style.txtMail}>Vous avez du courrier en attente</p>
+          {user.user.has_mail &&
+            <img src={Mail} />
+          }
+          {!user.user.has_mail &&
+            <img src={MailChecked} />
+          }
+        </div>
+        <>
+          {user.user.has_mail &&
+            <p className={style.txtMail}>Vous avez du courrier en attente</p>
 
-            }
-            {!user.user.has_mail &&
-              <p className={style.txtMail}>Vous n'avez pas de courrier</p>
+          }
+          {!user.user.has_mail &&
+            <p className={style.txtMail}>Vous n'avez pas de courrier</p>
 
 
-            }
-          </>
-        }
+          }
+        </>
+
       </div>
 
 
