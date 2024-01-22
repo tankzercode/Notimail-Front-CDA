@@ -28,7 +28,7 @@ export const EntrepriseMoreDetails = (props) => {
 export const Card = (props) => {
     console.log(props)
     // fonction basé sur un onChange qui s'active quand on active/desactive un input toggle
-
+    
     // On récupere l'evenement et le firm_name (Pour identifier l'entreprise)
     const handleCheckboxChange = (e, firm_name) => {
         // Si checked est en true execute le code ci-dessous
@@ -41,7 +41,7 @@ export const Card = (props) => {
         }
     }
     
-
+    const navigate = useNavigate()
 
     const [showDetails, setShowDetails] = useState(false)
   
@@ -63,7 +63,7 @@ export const Card = (props) => {
                                 <span className={style.knob}></span>
                             </label>
                             <button>
-                                <FaEdit style={{ color: 'var(--color2)' }} className={style.editButton} />
+                                <FaEdit onClick={()=>{navigate('/admin/editEntreprise',{ state: props.items })}} style={{ color: 'var(--color2)' }} className={style.editButton} />
                             </button>
                         </div>
                     </div>

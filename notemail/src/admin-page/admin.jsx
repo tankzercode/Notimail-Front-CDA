@@ -12,6 +12,7 @@ import axios from 'axios'
     
     const Admin = () => {
 
+<<<<<<< HEAD
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -26,6 +27,49 @@ import axios from 'axios'
         })
         .catch ((err) => (console.log(err)))
     }, [])
+=======
+
+const users = [{
+    "firm_name": "firm_name1",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "phone_number": "1234567890",
+    "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    "last_received_mail": "2024-01-15T12:00:00.000Z",
+    "last_picked_up": "2024-01-15T12:00:00.000Z",
+    "has_mail": true,
+    "is_admin": false,
+    "updatedAt": "2024-01-16T13:26:47.528Z",
+    "createdAt": "2024-01-16T13:26:47.528Z"
+}, {
+    "firm_name": "firm_name2",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "phone_number": "1234567890",
+    "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    "last_received_mail": "2024-01-15T12:00:00.000Z",
+    "last_picked_up": "2024-01-15T12:00:00.000Z",
+    "has_mail": true,
+    "is_admin": false,
+    "updatedAt": "2024-01-16T13:26:47.528Z",
+    "createdAt": "2024-01-16T13:26:47.528Z"
+}, {
+    "firm_name": "firm_name1",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "phone_number": "1234567890",
+    "password": "$2b$10$gnPUWsHAd/mOd8TUpJrcv.1SQEUEj0NtjyeV.0yzUqBXHr1.jLlPG",
+    "last_received_mail": "2024-01-15T12:00:00.000Z",
+    "last_picked_up": "2024-01-15T12:00:00.000Z",
+    "has_mail": true,
+    "is_admin": false,
+    "updatedAt": "2024-01-16T13:26:47.528Z",
+    "createdAt": "2024-01-16T13:26:47.528Z"
+}]
+>>>>>>> 0e9d56e96c4aefc47a20c5272d7386571663f7a6
 
     const [notifList, setNotifList] = useState([]);
     
