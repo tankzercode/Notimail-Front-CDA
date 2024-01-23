@@ -59,19 +59,20 @@ const Admin = () => {
             </div>
 
             <Modal open={open} onClose={onCloseModal} center>
-
-                {notifList.map((el, index) => {
-                    return <div key={"fir_nameModal" + index}>
-                        {el.firm_name}
-                    </div>
-                })}
+                <ul>
+                    {notifList.map((el, index) => {
+                        return <li key={"fir_nameModal" + index}>
+                            {el.firm_name}
+                        </li>
+                    })}
+                </ul>
 
                 {!notifList[0] &&
                     <p>
                         <br></br>
                         Aucun utilisateurs sélectionné</p>
                 }
-                <button>Annuler</button>
+                <button onClick={onCloseModal}>Annuler</button>
                 <button onClick={() => {
                     axios.put('http://localhost:3000/send', { notifList: notifList }, {
                         withCredentials: true,
@@ -79,8 +80,14 @@ const Admin = () => {
                         headers: {
                             "Access-Control-Allow-Origin": "http://localhost:3000",
                         }
-                    }).then((res) => { console.log(res) }).catch((err) => { console.log(err) })
-
+                    })
+                        .then((res) => {
+                            console.log(res);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
+                    onCloseModal();
                 }}>Envoyer</button>
             </Modal>
             <br></br>
