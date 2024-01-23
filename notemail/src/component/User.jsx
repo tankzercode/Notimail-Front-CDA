@@ -61,7 +61,9 @@ export const User = () => {
 
 
       <div className={style.container_receptionner}>
-        <button onClick={onOpenModal} className={style.receptionner}>Receptionner</button>
+        {user.user.has_mail &&
+          <button onClick={onOpenModal} className={style.receptionner}>Receptionner</button>
+        }
       </div>
       <Modal open={open} onClose={onCloseModal} center>
 
@@ -74,7 +76,7 @@ export const User = () => {
 
           <div className={style.yes_no_modal}>
             <img onClick={notifyMail} src={Yes} alt="" />
-            <img src={No} alt="" />
+            <img onClick={onCloseModal} src={No} alt="" />
           </div>
 
         </div>
