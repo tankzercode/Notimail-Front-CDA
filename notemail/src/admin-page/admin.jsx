@@ -44,7 +44,6 @@ const Admin = () => {
         setResultFiter(users)
     }, [users])
 
-    console.log(`Test ${resultFilter}`);
     const filterSearchBar = (e) => {
         const value = e.target.value;
         const resultLowerCase = value.toLowerCase();
