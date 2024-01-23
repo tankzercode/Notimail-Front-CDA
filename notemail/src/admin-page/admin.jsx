@@ -9,8 +9,8 @@ import { Card } from "../component/card";
 import { useNavigate } from "react-router-dom";
 
 import axios from 'axios'
-    
-    const Admin = () => {
+
+const Admin = () => {
 
     const [users, setUsers] = useState([]);
 
@@ -18,68 +18,87 @@ import axios from 'axios'
         fetch(`http://localhost:3000/user`, {
             withCredential: true,
         })
-        .then ((res) => {
-            return res.json()
-        })
-        .then ((data) => {
-            setUsers(data);
-        })
-        .catch ((err) => (console.log(err)))
+            .then((res) => {
+                return res.json()
+            })
+            .then((data) => {
+                setUsers(data);
+            })
+            .catch((err) => (console.log(err)))
     }, [])
 
     const [notifList, setNotifList] = useState([]);
-    
+
     const [showDetails, setShowDetails] = useState(false)
     const [open, setOpen] = useState(false);
     const onCloseModal = () => setOpen(false);
-    
+
     const handleCardClick = () => {
         setShowDetails(!showDetails);
     };
     const navigate = useNavigate()
 
+    const [resultFilter, setResultFiter] = useState(users)
+
+    useEffect(() => {
+        setResultFiter(users)
+    }, [users])
+
+    console.log(`Test ${resultFilter}`);
+    const filterSearchBar = (e) => {
+        const value = e.target.value;
+        const resultLowerCase = value.toLowerCase();
+        setResultFiter(users.filter((user) => user.firm_name.toLowerCase().includes(resultLowerCase)))
+    }
+
     return (
         <>
-        <Modal open={open} onClose={onCloseModal} center>
-        
-        {notifList.map((el, index)=>{
-            return <div  key={"fir_nameModal" + index}>
-            {el.firm_name}
+
+            <div className={style.searchBarContainer}>
+                <IoIosSearch />
+                <input onChange={filterSearchBar} type="text" />
             </div>
-        })}
-        
-        {!notifList[0] && 
-            <p>
-            <br></br>
-            Aucun utilisateurs sélectionné</p>
-        }
-        <button>Annuler</button>
-        <button onClick={  ()=>{
-            axios.put('http://localhost:3000/send', {notifList: notifList}, {
-                withCredentials: true,
-                credentials: 'include',
-                headers: {
-                    "Access-Control-Allow-Origin": "http://localhost:3000",
+
+            <Modal open={open} onClose={onCloseModal} center>
+
+                {notifList.map((el, index) => {
+                    return <div key={"fir_nameModal" + index}>
+                        {el.firm_name}
+                    </div>
+                })}
+
+                {!notifList[0] &&
+                    <p>
+                        <br></br>
+                        Aucun utilisateurs sélectionné</p>
                 }
-            } ).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)})
-    
-    }}>Envoyer</button>
-    </Modal>
-    <br></br>
-    {/* {console.log(users)} */}
-    {users.map((el, index)=>{
-        return <div key={"cardUser" + index }>
-        <Card items={el} setNotifList={setNotifList} ></Card>
-        </div>
-    })}
-    
-    <div className={style.buttonSection}>
-    <div className={style.buttonContainer}>
-    <button onClick={()=>{navigate('/admin/ajouterEntreprise')}}><IoMdAdd color="var(--color6)" fontSize="1.7rem"/></button>
-     <button onClick={()=>{setOpen(true)}} ><RiMailSendLine color="var(--color6)" fontSize="1.7rem"/></button> 
-    </div>
-    </div>
-    </>
+                <button>Annuler</button>
+                <button onClick={() => {
+                    axios.put('http://localhost:3000/send', { notifList: notifList }, {
+                        withCredentials: true,
+                        credentials: 'include',
+                        headers: {
+                            "Access-Control-Allow-Origin": "http://localhost:3000",
+                        }
+                    }).then((res) => { console.log(res) }).catch((err) => { console.log(err) })
+
+                }}>Envoyer</button>
+            </Modal>
+            <br></br>
+            {/* {console.log(users)} */}
+            {resultFilter.map((el, index) => {
+                return <div key={"cardUser" + index}>
+                    <Card items={el} setNotifList={setNotifList} ></Card>
+                </div>
+            })}
+
+            <div className={style.buttonSection}>
+                <div className={style.buttonContainer}>
+                    <button onClick={() => { navigate('/admin/ajouterEntreprise') }}><IoMdAdd color="var(--color6)" fontSize="1.7rem" /></button>
+                    <button onClick={() => { setOpen(true) }} ><RiMailSendLine color="var(--color6)" fontSize="1.7rem" /></button>
+                </div>
+            </div>
+        </>
     );
 };
 
