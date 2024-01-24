@@ -59,36 +59,42 @@ const Admin = () => {
             </div>
 
             <Modal open={open} onClose={onCloseModal} center>
-                <ul>
-                    {notifList.map((el, index) => {
-                        return <li key={"fir_nameModal" + index}>
-                            {el.firm_name}
-                        </li>
-                    })}
-                </ul>
+                {notifList[0] &&
+                    <ul>
+                        {notifList.map((el, index) => {
+                            return <li key={"fir_nameModal" + index}>
+                                {el.firm_name}
+                            </li>
+                        })}
+                    </ul>
+                }
 
                 {!notifList[0] &&
                     <p>
                         <br></br>
                         Aucun utilisateurs sélectionné</p>
                 }
-                <button onClick={onCloseModal}>Annuler</button>
-                <button onClick={() => {
-                    axios.put('http://localhost:3000/send', { notifList: notifList }, {
-                        withCredentials: true,
-                        credentials: 'include',
-                        headers: {
-                            "Access-Control-Allow-Origin": "http://localhost:3000",
-                        }
-                    })
-                        .then((res) => {
-                            console.log(res);
+
+                <div className={style.modalButtonContainer}>
+
+                    <button className={`${style.annuler} ${style.notifButton}`} onClick={onCloseModal}>Annuler</button>
+                    <button className={`${style.envoyer} ${style.notifButton}`} onClick={() => {
+                        axios.put('http://localhost:3000/send', { notifList: notifList }, {
+                            withCredentials: true,
+                            credentials: 'include',
+                            headers: {
+                                "Access-Control-Allow-Origin": "http://localhost:3000",
+                            }
                         })
-                        .catch((err) => {
-                            console.log(err);
-                        })
-                    onCloseModal();
-                }}>Envoyer</button>
+                            .then((res) => {
+                                console.log(res);
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            })
+                        onCloseModal();
+                    }}>Envoyer</button>
+                </div>
             </Modal>
             <br></br>
             {/* {console.log(users)} */}

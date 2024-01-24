@@ -164,8 +164,30 @@
     align-items: center;
     justify-content: center;
 }
-.buttonContainer button:focus {
+.buttonContainer button:focus, .envoyer:focus, .annuler:focus {
     outline: none;
+}
+
+/* MODAL NOTIF */
+
+.modalButtonContainer {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.notifButton {
+    border-radius: 100px;
+    padding: 10px 20px;
+    color: var(--color6);
+    border: none;
+}
+
+.annuler {
+    background: var(--color5);
+}
+.envoyer {
+    background: var(--color2);
 }
 
 @media screen and (max-width: 400px) {

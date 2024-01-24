@@ -16,8 +16,8 @@ export const EntrepriseMoreDetails = (props) => {
                 <div>{props.details.phone_number}</div>
             </div>
             <div className={style.infosContainer}>
-                <div className={style.infoTitle}>Identifiant:</div>
-                <div>{props.details.password}</div>
+                <div className={style.infoTitle}>Mot de passe:</div>
+                <div>****</div>
             </div>
         </div>
 
@@ -28,28 +28,28 @@ export const EntrepriseMoreDetails = (props) => {
 export const Card = (props) => {
     console.log(props)
     // fonction basé sur un onChange qui s'active quand on active/desactive un input toggle
-    
+
     // On récupere l'evenement et le firm_name (Pour identifier l'entreprise)
     const handleCheckboxChange = (e, firm_name) => {
         // Si checked est en true execute le code ci-dessous
         if (e.target.checked) {
-            props.setNotifList(prev => [...prev, {firm_name:firm_name}])
+            props.setNotifList(prev => [...prev, { firm_name: firm_name }])
         } // Je target l'element du tableau qui contient le firm_name que je veux supprimer.
         else {
             // prev represente notifList. Avec filter, on filtre notre tableau pour en recréer un sans l'element firm_name (Celui qu'on veut supprimer). item symbolise chaque element du tableau notifList
-            props.setNotifList(prev => prev.filter(item => item.firm_name !== firm_name))            
+            props.setNotifList(prev => prev.filter(item => item.firm_name !== firm_name))
         }
     }
-    
+
     const navigate = useNavigate()
 
     const [showDetails, setShowDetails] = useState(false)
-  
+
     const handleCardClick = () => {
         setShowDetails(!showDetails);
     };
-    return(
-        <>  
+    return (
+        <>
             <div className={style.entrepriseListContainer}>
                 <div className={style.moreDetailsContainer} onClick={handleCardClick}>
                     <div className={style.entrepriseCard}>
@@ -59,17 +59,17 @@ export const Card = (props) => {
                         </div>
                         <div className={style.entrepriseEdit}>
                             <label className={style.toggleButton}>
-                                <input type="checkbox" onChange={(e)=>{handleCheckboxChange(e,props.items.firm_name)}}/>
+                                <input type="checkbox" onChange={(e) => { handleCheckboxChange(e, props.items.firm_name) }} />
                                 <span className={style.knob}></span>
                             </label>
                             <button>
-                                <FaEdit onClick={()=>{navigate('/admin/editEntreprise',{ state: props.items })}} style={{ color: 'var(--color2)' }} className={style.editButton} />
+                                <FaEdit onClick={() => { navigate('/admin/editEntreprise', { state: props.items }) }} style={{ color: 'var(--color2)' }} className={style.editButton} />
                             </button>
                         </div>
                     </div>
                     {showDetails && <EntrepriseMoreDetails details={props.items} ></EntrepriseMoreDetails>}
                 </div>
-            </div>        
+            </div>
         </>
     )
 

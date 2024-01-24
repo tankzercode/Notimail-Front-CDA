@@ -115,7 +115,7 @@ export const EditEntreprise = () => {
                         </div>
                     </div>
                     <div className={style.containerInput_text}>
-                        <p className={style.txt}>Identifiant</p>
+                        <p className={style.txt}>Mot de passe</p>
                         <div className={style.inputContainer}>
                             <input
                                 type="text"
