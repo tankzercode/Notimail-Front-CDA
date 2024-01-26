@@ -13,6 +13,8 @@ export const AjouterEntreprise = () => {
         // window.history.back();
         navigate("/admin");
     };
+    const [message, setMessage] = useState()
+    const [errors, setErrors] = useState([])
 
     const [formData, setFormData] = useState({
         firm_name: "",
@@ -53,6 +55,17 @@ export const AjouterEntreprise = () => {
                     <p className={style.txtEntreprise}>Entreprise</p>
                 </div>
             </div>
+
+
+            {message &&
+
+                <p style={{ color: "red", textAlign: "center" }}>{message} </p>
+            }
+
+
+            {errors.map((el) => {
+                return <p style={{ color: "red", textAlign: "center" }}>{el} </p>
+            })}
             <div className={style.formContainer}>
                 <form className={style.edit_form}>
                     <div className={style.containerInput_text}>
@@ -141,12 +154,26 @@ export const AjouterEntreprise = () => {
                                     body: JSON.stringify(formData),
                                 })
                                     .then((res) => {
+
                                         return res.json();
 
                                     })
                                     .then((res) => {
+                                        setMessage(false)
+                                        setErrors([])
+
                                         console.log(res);
-                                        handleGoBack();
+
+                                        if (res.message || res.error) {
+                                            setMessage(res.message || res.error)
+                                        }
+                                        if (res.errors) {
+                                            setErrors(res.errors)
+                                        }
+                                        if (res.data) {
+                                            handleGoBack();
+
+                                        }
                                     })
                                     .catch((err) => {
                                         console.log(err);

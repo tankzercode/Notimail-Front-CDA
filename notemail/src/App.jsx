@@ -7,33 +7,33 @@ import { User } from './component/User';
 import UserContext from './userContext';
 import Admin from './admin-page/admin'
 import { EditEntreprise } from './admin-page/editEntreprise';
-import { AjouterEntreprise } from './admin-page/ajouterEntreprise';
+import { AjouterEntreprise } from './admin-page/AjouterEntreprise';
 
 function App() {
-  
+
   const [user, setUser] = React.useState(null)
   useEffect(() => {
   }, [])
   return (
     <>
-    <UserContext.Provider value={{ user, setUser }} >
-    {window.location.pathname !== "/" &&
-    
-    <Navbar />
-  }
-  
-  <Routes>
-  <Route path="/" element={<Login />} ></Route>
-  <Route path='/admin' element={<Admin />}></Route>
-  <Route path='/admin/editEntreprise' element={<EditEntreprise />}> </Route>
-  <Route path='/admin/ajouterEntreprise' element={<AjouterEntreprise />}> </Route>
-  
-  <Route path='/user' element={<User />}> </Route>
-  </Routes>
-  </UserContext.Provider>
-  </>
+      <UserContext.Provider value={{ user, setUser }} >
+        {window.location.pathname !== "/" &&
+
+          <Navbar />
+        }
+
+        <Routes>
+          <Route path="/" element={<Login />} ></Route>
+          <Route path='/admin' element={<Admin />}></Route>
+          <Route path='/admin/editEntreprise' element={<EditEntreprise />}> </Route>
+          <Route path='/admin/ajouterEntreprise' element={<AjouterEntreprise />}> </Route>
+
+          <Route path='/user' element={<User />}> </Route>
+        </Routes>
+      </UserContext.Provider>
+    </>
   )
-  
+
 }
 
 export default App

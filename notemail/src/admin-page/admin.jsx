@@ -13,7 +13,7 @@ import axios from 'axios'
 const Admin = () => {
 
     const [users, setUsers] = useState([]);
-
+    const [error, setError] = useState(false)
     useEffect(() => {
         fetch(`http://localhost:3000/user`, {
             withCredential: true,
@@ -57,7 +57,10 @@ const Admin = () => {
                 <IoIosSearch />
                 <input onChange={filterSearchBar} type="text" />
             </div>
+            {error &&
 
+                <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+            }
             <Modal open={open} onClose={onCloseModal} center>
                 {notifList[0] &&
                     <ul>
@@ -91,6 +94,8 @@ const Admin = () => {
                             })
                             .catch((err) => {
                                 console.log(err);
+
+                                setError(err.response.data)
                             })
                         onCloseModal();
                     }}>Envoyer</button>

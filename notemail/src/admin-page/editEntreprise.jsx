@@ -33,6 +33,7 @@ export const EditEntreprise = () => {
     };
 
     const handleSubmit = (event) => {
+        console.log("submite")
         event.preventDefault();
         axios.put(`http://localhost:3000/user/${location.state.firm_name}`, { formData }, {
             withCredentials: true,
