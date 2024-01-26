@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import Logo from "../assets/LogoByMathysG.jpg"
 import Retour from "../assets/retour.png"
 import style from './edit.module.css'
@@ -7,9 +7,12 @@ import axios from "axios"
 
 export const EditEntreprise = () => {
     const location = useLocation();
+
+    const navigate = useNavigate();
     console.log(location.state)
     const handleGoBack = () => {
-        window.history.back();
+        // window.history.back();
+        navigate('/admin');
     };
 
     const [error, setError] = useState(false)
