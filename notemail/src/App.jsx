@@ -8,6 +8,7 @@ import UserContext from './userContext';
 import Admin from './admin-page/admin'
 import { EditEntreprise } from './admin-page/editEntreprise';
 import { AjouterEntreprise } from './admin-page/AjouterEntreprise';
+import AuthGuard from './service/AuthGuard';
 
 function App() {
 
@@ -24,10 +25,12 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Login />} ></Route>
-          <Route path='/admin' element={<Admin />}></Route>
-          <Route path='/admin/editEntreprise' element={<EditEntreprise />}> </Route>
-          <Route path='/admin/ajouterEntreprise' element={<AjouterEntreprise />}> </Route>
 
+          <Route element={<AuthGuard />} >
+            <Route path='/admin' element={<Admin />}></Route>
+            <Route path='/admin/editEntreprise' element={<EditEntreprise />}> </Route>
+            <Route path='/admin/ajouterEntreprise' element={<AjouterEntreprise />}> </Route>
+          </Route>
           <Route path='/user' element={<User />}> </Route>
         </Routes>
       </UserContext.Provider>
